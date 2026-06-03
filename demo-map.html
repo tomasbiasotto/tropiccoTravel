@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tropicco · Demo Mapa Interativo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Leaflet (mapa interativo, gratuito, sem chave de API) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f5f8fc;
+      --ink: #0f1a2b;
+      --ink-mid: #4a5468;
+      --muted: #8c93a3;
+      --blue: #2f6bb3;
+      --blue-deep: #1f4f8c;
+      --blue-soft: #e8f0fa;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .demo-header {
+      padding: 24px 40px;
+      border-bottom: 1px solid #eef3f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .demo-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .demo-logo img { width: 28px; height: 28px; color: var(--blue); }
+    .demo-logo span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .demo-back {
+      font-size: 13px;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+    }
+
+    .demo-intro {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 40px 32px;
+      text-align: center;
+    }
+    .demo-intro .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 18px;
+    }
+    .demo-intro h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .demo-intro h1 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .demo-intro p {
+      font-size: 15px;
+      color: var(--ink-mid);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .map-container {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+    }
+    #map {
+      width: 100%;
+      height: 620px;
+      border-radius: 4px;
+      background: var(--blue-soft);
+      box-shadow: 0 20px 60px -20px rgba(15,26,43,0.18);
+      /* tint suave azul-claro: dessatura levemente os tiles e adiciona toque azul */
+      filter: saturate(0.6) brightness(1.02) contrast(0.96);
+    }
+
+    /* === MARCADORES CUSTOMIZADOS === */
+    .tropicco-marker {
+      width: 22px;
+      height: 22px;
+      position: relative;
+    }
+    .tropicco-marker .dot {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(47,107,179,0.45);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .tropicco-marker .pulse {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      opacity: 0.5;
+      animation: ripple 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .tropicco-marker:hover .dot {
+      transform: scale(1.3);
+      background: var(--blue-deep);
+    }
+    @keyframes ripple {
+      0%   { transform: scale(0.8); opacity: 0.55; }
+      80%  { transform: scale(3.2); opacity: 0; }
+      100% { transform: scale(3.2); opacity: 0; }
+    }
+
+    /* === POPUP STYLE === */
+    .leaflet-popup-content-wrapper {
+      border-radius: 4px;
+      box-shadow: 0 10px 30px -10px rgba(15,26,43,0.25);
+      padding: 0;
+      overflow: hidden;
+      min-width: 240px;
+    }
+    .leaflet-popup-content {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .leaflet-popup-tip { box-shadow: 0 4px 8px rgba(15,26,43,0.1); }
+    .popup-card .popup-img {
+      width: 100%;
+      height: 110px;
+      background: linear-gradient(135deg, #2f6bb3, #aac4e0);
+    }
+    .popup-card .popup-body { padding: 14px 18px 16px; }
+    .popup-card .popup-tag {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .popup-card h3 {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 6px 0 6px;
+    }
+    .popup-card p {
+      font-size: 12px;
+      color: var(--ink-mid);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .popup-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--blue);
+      border-bottom: 1px solid var(--blue);
+      padding-bottom: 2px;
+      transition: gap 0.25s ease;
+    }
+    .popup-card a:hover { gap: 12px; }
+
+    /* === ATTRIBUTION DISCREETER === */
+    .leaflet-control-attribution {
+      font-size: 10px;
+      background: rgba(255,255,255,0.85) !important;
+    }
+
+    .demo-options {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 40px;
+      background: var(--bg-soft);
+      border-radius: 6px;
+    }
+    .demo-options h2 {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .demo-options ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .demo-options li {
+      padding: 16px;
+      background: #fff;
+      border: 1px solid #eef3f9;
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+    .demo-options li strong { color: var(--ink); display: block; margin-bottom: 4px; font-weight: 500; }
+
+    @media (max-width: 768px) {
+      .demo-header { padding: 16px 20px; }
+      .demo-intro { padding: 36px 20px 20px; }
+      .map-container { padding: 0 20px; margin-bottom: 40px; }
+      #map { height: 460px; }
+      .demo-options { padding: 24px 20px; margin: 0 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="demo-header">
+    <a href="index.html" class="demo-logo">
+      <img src="logo.svg" alt="">
+      <span>TROPICCO</span>
+    </a>
+    <a href="index.html" class="demo-back">← Voltar para o site</a>
+  </header>
+
+  <section class="demo-intro">
+    <span class="eyebrow">Demonstração · Mapa interativo</span>
+    <h1>Onde levamos<br><em>sua família</em>.</h1>
+    <p>Mapa real com tiles geográficos. Clique nos pinos azuis para ver detalhes de cada destino. Você pode arrastar e dar zoom como num Google Maps — mas com estética customizada para a marca.</p>
+  </section>
+
+  <div class="map-container">
+    <div id="map" role="region" aria-label="Mapa interativo dos destinos Tropicco"></div>
+  </div>
+
+  <section class="demo-options">
+    <h2>O que esse mapa faz</h2>
+    <ul>
+      <li><strong>É um mapa real</strong>Geografia precisa, com países, oceanos e continentes nas posições corretas.</li>
+      <li><strong>Arrastar e zoom</strong>Use o scroll do mouse ou os botões + / − no canto superior esquerdo.</li>
+      <li><strong>Pinos pulsantes</strong>Cinco destinos em destaque, com animação sutil que chama atenção sem ser invasiva.</li>
+      <li><strong>Popup ao clicar</strong>Mini-card com tag, título, descrição e link para a página do destino.</li>
+      <li><strong>Tema claro</strong>Tiles dessaturados + filtro azul para combinar com a paleta da marca.</li>
+      <li><strong>Sem chave de API</strong>Usa Leaflet (gratuito) + tiles do CartoDB (gratuito). Sem custo recorrente.</li>
+    </ul>
+  </section>
+
+  <script>
+    // === CONFIGURAÇÃO DO MAPA ===
+    const map = L.map('map', {
+      center: [25, 10],          // centro do mundo (latitude, longitude)
+      zoom: 2,
+      minZoom: 2,
+      maxZoom: 8,
+      worldCopyJump: true,
+      zoomControl: true,
+      scrollWheelZoom: true,
+      attributionControl: true,
+    });
+
+    // Tiles claros do CartoDB (Voyager) — gratuito, sem chave
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap contributors © CARTO',
+      subdomains: 'abcd',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // === DESTINOS ===
+    const destinos = [
+      {
+        nome: 'Itália',
+        coords: [43.5, 11.5],
+        tag: 'Europa · 12 dias',
+        desc: 'Toscana, Amalfi e Sicília — vinhedos, mar e mesa farta com toda a família.',
+        link: 'index.html#curadoria'
+      },
+      {
+        nome: 'Japão',
+        coords: [36.0, 138.0],
+        tag: 'Ásia · 14 dias',
+        desc: 'Tóquio, Kyoto e Hokkaido. Tradição milenar e modernidade no mesmo dia.',
+        link: 'index.html#curadoria'
+      },
+      {
+        nome: 'Patagônia',
+        coords: [-50.0, -73.0],
+        tag: 'Sul · 10 dias',
+        desc: 'Torres del Paine e El Chaltén. Trekking suave, lodges premium, fim de mundo.',
+        link: 'index.html#curadoria'
+      },
+      {
+        nome: 'Grécia',
+        coords: [37.0, 25.0],
+        tag: 'Mediterrâneo · 9 dias',
+        desc: 'Santorini, Creta e ilhas do Egeu — barco privado e vilas com vista.',
+        link: 'index.html#curadoria'
+      },
+      {
+        nome: 'Costa Rica',
+        coords: [10.0, -84.0],
+        tag: 'Américas · 10 dias',
+        desc: 'Pacífico, selva e vulcões. Aventura segura para crianças e adolescentes.',
+        link: 'index.html#curadoria'
+      },
+    ];
+
+    // === MARCADOR CUSTOMIZADO ===
+    function createMarkerIcon() {
+      return L.divIcon({
+        className: '',
+        html: '<div class="tropicco-marker"><div class="pulse"></div><div class="dot"></div></div>',
+        iconSize: [22, 22],
+        iconAnchor: [11, 11],
+        popupAnchor: [0, -10],
+      });
+    }
+
+    // === POPUP HTML ===
+    function buildPopup(d) {
+      return `
+        <div class="popup-card">
+          <div class="popup-img"></div>
+          <div class="popup-body">
+            <span class="popup-tag">${d.tag}</span>
+            <h3>${d.nome}</h3>
+            <p>${d.desc}</p>
+            <a href="${d.link}">Ver experiência →</a>
+          </div>
+        </div>
+      `;
+    }
+
+    // === ADICIONA OS PINOS ===
+    destinos.forEach(d => {
+      const marker = L.marker(d.coords, { icon: createMarkerIcon() })
+        .addTo(map)
+        .bindPopup(buildPopup(d), {
+          maxWidth: 280,
+          closeButton: false,
+          offset: [0, -4],
+        });
+    });
+  </script>
+</body>
+</html>

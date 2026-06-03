@@ -1,0 +1,14 @@
+# robots.txt — Tropicco
+# https://tropicco.com.br
+
+User-agent: *
+Allow: /
+
+# Páginas de demonstração — não indexar
+Disallow: /demo-map.html
+Disallow: /demo-globe.html
+
+# Política de privacidade não compete por ranking
+Disallow: /politica-privacidade.html
+
+Sitemap: https://tropicco.com.br/sitemap.xml

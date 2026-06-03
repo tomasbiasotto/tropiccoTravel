@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tropicco · Demo Globo 3D</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/topojson-client@3"></script>
+  <script src="https://unpkg.com/globe.gl@2.34.4"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f5f8fc;
+      --ink: #0f1a2b;
+      --ink-mid: #4a5468;
+      --muted: #8c93a3;
+      --blue: #2f6bb3;
+      --blue-deep: #1f4f8c;
+      --blue-soft: #e8f0fa;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .demo-header {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    .demo-logo { display: inline-flex; align-items: center; gap: 10px; }
+    .demo-logo img { width: 28px; height: 28px; }
+    .demo-logo span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .demo-back {
+      font-size: 13px;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+    }
+
+    /* === STAGE === */
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 720px;
+      background:
+        radial-gradient(ellipse at center, #ffffff 0%, var(--bg-soft) 70%, var(--blue-soft) 100%);
+      overflow: hidden;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 56px;
+      transform: translateY(-50%);
+      max-width: 460px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .hero-text .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 18px;
+    }
+    .hero-text h1 {
+      font-size: clamp(40px, 4.6vw, 64px);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      line-height: 1.04;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .hero-text h1 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .hero-text p {
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
+    #globe {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* === PINOS HTML SOBREPOSTOS === */
+    .globe-pin {
+      width: 28px;
+      height: 28px;
+      position: relative;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+    .globe-pin .dot {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px rgba(47,107,179,0.55);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .globe-pin .pulse {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      opacity: 0.55;
+      animation: ripple 2.4s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+    .globe-pin:hover .dot {
+      transform: scale(1.35);
+      background: var(--blue-deep);
+    }
+    @keyframes ripple {
+      0%   { transform: scale(0.6); opacity: 0.55; }
+      80%  { transform: scale(3.4); opacity: 0; }
+      100% { transform: scale(3.4); opacity: 0; }
+    }
+    .globe-pin .pin-label {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      background: rgba(255,255,255,0.92);
+      padding: 3px 8px;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .globe-pin:hover .pin-label,
+    .globe-pin.active .pin-label { opacity: 1; }
+
+    /* === SIDE PANEL (info do destino selecionado) === */
+    .info-panel {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%) translateX(20px);
+      width: 320px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px -20px rgba(15,26,43,0.25);
+      padding: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 6;
+    }
+    .info-panel.visible {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+    .info-panel .info-img {
+      height: 140px;
+      background: linear-gradient(135deg, #2f6bb3, #aac4e0);
+    }
+    .info-panel .info-body { padding: 22px 24px 24px; }
+    .info-panel .info-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .info-panel h3 {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin: 8px 0 10px;
+    }
+    .info-panel p {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .info-panel a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--blue);
+      border-bottom: 1px solid var(--blue);
+      padding-bottom: 3px;
+      transition: gap 0.25s ease;
+    }
+    .info-panel a:hover { gap: 14px; }
+    .info-panel .close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1;
+      z-index: 2;
+    }
+
+    /* === CONTROLS HINT === */
+    .controls-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 4;
+      display: flex;
+      gap: 24px;
+    }
+    .controls-hint span::before {
+      content: '·';
+      color: var(--blue);
+      margin-right: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-text { left: 32px; max-width: 360px; }
+      .info-panel { width: 280px; right: 24px; }
+    }
+    @media (max-width: 768px) {
+      .demo-header { padding: 16px 20px; }
+      .stage { min-height: 600px; height: auto; padding-bottom: 320px; }
+      .hero-text {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        padding: 100px 20px 0;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .hero-text h1 { font-size: 32px; }
+      #globe { top: 280px; }
+      .info-panel {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: calc(100% - 40px);
+        margin: 20px auto;
+      }
+      .info-panel.visible { transform: none; }
+      .controls-hint { bottom: 12px; font-size: 10px; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="demo-header">
+    <a href="index.html" class="demo-logo">
+      <img src="logo.svg" alt="">
+      <span>TROPICCO</span>
+    </a>
+    <a href="index.html" class="demo-back">← Voltar para o site</a>
+  </header>
+
+  <section class="stage">
+    <div class="hero-text">
+      <span class="eyebrow">Globo 3D · Demonstração</span>
+      <h1>O mundo no<br>seu <em>alcance</em>.</h1>
+      <p>Globo terrestre rotacional com continentes em azul-marca. Arraste para girar, role para aproximar. Clique nos pinos para ver os destinos.</p>
+    </div>
+
+    <div id="globe"></div>
+
+    <aside class="info-panel" id="infoPanel">
+      <span class="close" id="closeInfo">×</span>
+      <div class="info-img"></div>
+      <div class="info-body">
+        <span class="info-tag" id="infoTag"></span>
+        <h3 id="infoName"></h3>
+        <p id="infoDesc"></p>
+        <a href="index.html#curadoria">Ver experiência →</a>
+      </div>
+    </aside>
+
+    <div class="controls-hint">
+      <span>Arraste para girar</span>
+      <span>Role para aproximar</span>
+      <span>Clique nos pinos</span>
+    </div>
+  </section>
+
+  <script>
+    const destinos = [
+      { nome: 'Itália',     lat: 43.5,  lng: 11.5,  tag: 'Europa · 12 dias',         desc: 'Toscana, Amalfi e Sicília — vinhedos, mar e mesa farta com toda a família.' },
+      { nome: 'Japão',      lat: 36.0,  lng: 138.0, tag: 'Ásia · 14 dias',           desc: 'Tóquio, Kyoto e Hokkaido. Tradição milenar e modernidade no mesmo dia.' },
+      { nome: 'Patagônia',  lat: -50.0, lng: -73.0, tag: 'Sul · 10 dias',            desc: 'Torres del Paine e El Chaltén. Trekking suave, lodges premium, fim de mundo.' },
+      { nome: 'Grécia',     lat: 37.0,  lng: 25.0,  tag: 'Mediterrâneo · 9 dias',    desc: 'Santorini, Creta e ilhas do Egeu — barco privado e vilas com vista.' },
+      { nome: 'Costa Rica', lat: 10.0,  lng: -84.0, tag: 'Américas · 10 dias',       desc: 'Pacífico, selva e vulcões. Aventura segura para crianças e adolescentes.' },
+    ];
+
+    const globeContainer = document.getElementById('globe');
+
+    // Textura sólida azul-claro como SVG inline (1×1 pixel, escalado pelo globo)
+    const TEXTURA_GLOBO = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="2" height="1"><rect width="2" height="1" fill="#f5f8fc"/></svg>'
+    );
+
+    const world = Globe()(globeContainer)
+      .backgroundColor('rgba(0,0,0,0)')
+      .showAtmosphere(true)
+      .atmosphereColor('#2f6bb3')
+      .atmosphereAltitude(0.22)
+      .showGlobe(true)
+      .globeImageUrl(TEXTURA_GLOBO);
+
+    // === ORIGEM (sede Tropicco) ===
+    const origem = { nome: 'Lagoa Vermelha', lat: -28.21, lng: -51.53 };
+
+    // === HELPERS ===
+    function centroide(feature) {
+      const pontos = [];
+      (function walk(arr) {
+        if (typeof arr[0] === 'number') pontos.push(arr);
+        else arr.forEach(walk);
+      })(feature.geometry.coordinates);
+      let lng = 0, lat = 0;
+      pontos.forEach(p => { lng += p[0]; lat += p[1]; });
+      return [lng / pontos.length, lat / pontos.length];
+    }
+    function bboxArea(feature) {
+      let minLat = 90, maxLat = -90, minLng = 180, maxLng = -180;
+      (function walk(arr) {
+        if (typeof arr[0] === 'number') {
+          const [lng, lat] = arr;
+          if (lat < minLat) minLat = lat;
+          if (lat > maxLat) maxLat = lat;
+          if (lng < minLng) minLng = lng;
+          if (lng > maxLng) maxLng = lng;
+        } else arr.forEach(walk);
+      })(feature.geometry.coordinates);
+      return (maxLng - minLng) * (maxLat - minLat);
+    }
+
+    // === ESTADO DE HOVER ===
+    let paisHover = null;
+    const COR_PAIS       = 'rgba(47,107,179,0.85)';
+    const COR_PAIS_HOVER = 'rgba(20,55,100,1)';
+    const COR_LADO       = 'rgba(47,107,179,0.22)';
+    const COR_BORDA      = 'rgba(255,255,255,0.85)';
+
+    function aplicarPoligonos(features) {
+      world
+        .polygonsData(features)
+        .polygonCapColor(d => d === paisHover ? COR_PAIS_HOVER : COR_PAIS)
+        .polygonSideColor(() => COR_LADO)
+        .polygonStrokeColor(() => COR_BORDA)
+        .polygonAltitude(0.006)               // altitude constante (sem extrusão por hover — geometria não é refeita)
+        .polygonsTransitionDuration(0)        // sem transição animada (instantâneo)
+        .polygonLabel(d => `<div style="
+          font-family: Inter, sans-serif;
+          font-size: 12px;
+          background: rgba(15,26,43,0.92);
+          color: #fff;
+          padding: 6px 12px;
+          border-radius: 3px;
+          letter-spacing: 0.04em;
+        ">${d.properties.name || ''}</div>`)
+        .onPolygonHover(h => {
+          if (h === paisHover) return;        // ignora reentrância
+          paisHover = h;
+          // só recalcula a cor (mais barato que altitude)
+          world.polygonCapColor(d => d === paisHover ? COR_PAIS_HOVER : COR_PAIS);
+          globeContainer.style.cursor = h ? 'pointer' : 'grab';
+        });
+    }
+
+    // === LABELS (nomes dos países, com tiers por zoom) ===
+    let todosLabels = [];
+    let labelsAtuais = null;         // chave do tier atualmente renderizado (evita rebuild redundante)
+
+    function tierPorAltitude(alt) {
+      if (alt > 2.0)  return 'longe';
+      if (alt > 1.3)  return 'medio';
+      return 'perto';
+    }
+
+    function atualizarLabels() {
+      if (!todosLabels.length) return;
+      const alt = world.pointOfView().altitude;
+      const tier = tierPorAltitude(alt);
+      if (tier === labelsAtuais) return;     // mesma faixa de zoom — não rebuild
+      labelsAtuais = tier;
+      let dados;
+      if (tier === 'longe')      dados = [];
+      else if (tier === 'medio') dados = todosLabels.slice(0, 25);
+      else                       dados = todosLabels.slice(0, 80);
+      world.labelsData(dados);
+    }
+
+    world
+      .labelLat(d => d.lat)
+      .labelLng(d => d.lng)
+      .labelText(d => d.nome)
+      .labelSize(d => Math.max(0.2, Math.min(0.45, Math.sqrt(d.area) * 0.04)))
+      .labelDotRadius(0)
+      .labelColor(() => 'rgba(15,26,43,0.78)')
+      .labelResolution(1)              // resolução baixa do texto (menos vértices)
+      .labelAltitude(0.012)
+      .labelIncludeDot(false);
+
+    // Debounce: só recalcula labels quando o usuário PARA de mexer (~150ms)
+    let labelTimer = null;
+    function pedirAtualizacaoLabels() {
+      if (labelTimer) clearTimeout(labelTimer);
+      labelTimer = setTimeout(atualizarLabels, 150);
+    }
+    world.controls().addEventListener('change', pedirAtualizacaoLabels);
+
+    // === ARCOS (rotas a partir de Lagoa Vermelha) ===
+    const arcos = destinos.map(d => ({
+      startLat: origem.lat,
+      startLng: origem.lng,
+      endLat:   d.lat,
+      endLng:   d.lng,
+      destino:  d.nome,
+    }));
+
+    world
+      .arcsData(arcos)
+      .arcStartLat('startLat')
+      .arcStartLng('startLng')
+      .arcEndLat('endLat')
+      .arcEndLng('endLng')
+      .arcColor(() => ['rgba(47,107,179,0.05)', 'rgba(47,107,179,0.85)'])
+      .arcStroke(0.35)
+      .arcAltitudeAutoScale(0.45)
+      .arcDashLength(0.4)
+      .arcDashGap(0.15)
+      .arcDashAnimateTime(2600)
+      .arcsTransitionDuration(0);
+
+    // === PINO DE ORIGEM (Lagoa Vermelha) ===
+    world.pointsData([origem])
+      .pointLat('lat')
+      .pointLng('lng')
+      .pointAltitude(0.012)
+      .pointRadius(0.35)
+      .pointColor(() => '#1f4f8c')
+      .pointResolution(12)
+      .pointLabel(d => `<div style="
+        font-family: Inter, sans-serif;
+        font-size: 11px;
+        background: rgba(31,79,140,0.95);
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 3px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      ">${d.nome} · sede</div>`);
+
+    // === CARREGA PAÍSES (50m alta resolução, fallback p/ 110m) ===
+    function processar(topo) {
+      const features = topojson.feature(topo, topo.objects.countries).features;
+      aplicarPoligonos(features);
+      todosLabels = features
+        .map(f => {
+          const [lng, lat] = centroide(f);
+          return { nome: (f.properties.name || '').toUpperCase(), lat, lng, area: bboxArea(f) };
+        })
+        .filter(d => d.nome)
+        .sort((a, b) => b.area - a.area);
+      atualizarLabels();
+    }
+
+    // 110m é ~6x mais leve que 50m (geometria simplificada). Para mais detalhe,
+    // troque para countries-50m.json — vai ficar mais bonito porém mais pesado.
+    fetch('https://unpkg.com/world-atlas@2/countries-110m.json')
+      .then(r => r.json())
+      .then(processar);
+
+    // Pinos como elementos HTML sobrepostos (CSS animado)
+    world.htmlElementsData(destinos)
+      .htmlLat(d => d.lat)
+      .htmlLng(d => d.lng)
+      .htmlAltitude(0.01)
+      .htmlElement(d => {
+        const el = document.createElement('div');
+        el.className = 'globe-pin';
+        el.innerHTML = `
+          <div class="pin-label">${d.nome}</div>
+          <div class="pulse"></div>
+          <div class="dot"></div>
+        `;
+        el.addEventListener('click', () => focusOn(d, el));
+        return el;
+      });
+
+    // Auto-rotação suave
+    world.controls().autoRotate = true;
+    world.controls().autoRotateSpeed = 0.35;
+    world.controls().enableZoom = true;
+    world.controls().enablePan = false;
+
+    // Posição inicial da câmera
+    world.pointOfView({ lat: 20, lng: 0, altitude: 2.4 }, 0);
+
+    // Resize
+    function resize() {
+      world.width(globeContainer.offsetWidth);
+      world.height(globeContainer.offsetHeight);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Painel lateral
+    const panel = document.getElementById('infoPanel');
+    const tag = document.getElementById('infoTag');
+    const name = document.getElementById('infoName');
+    const desc = document.getElementById('infoDesc');
+
+    function focusOn(d, el) {
+      // Atualiza painel
+      tag.textContent = d.tag;
+      name.textContent = d.nome;
+      desc.textContent = d.desc;
+      panel.classList.add('visible');
+
+      // Desliga rotação automática + foca câmera no destino
+      world.controls().autoRotate = false;
+      world.pointOfView({ lat: d.lat, lng: d.lng, altitude: 1.8 }, 1100);
+
+      // Marca pino ativo
+      document.querySelectorAll('.globe-pin').forEach(p => p.classList.remove('active'));
+      if (el) el.classList.add('active');
+    }
+
+    document.getElementById('closeInfo').addEventListener('click', () => {
+      panel.classList.remove('visible');
+      world.controls().autoRotate = true;
+      document.querySelectorAll('.globe-pin').forEach(p => p.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

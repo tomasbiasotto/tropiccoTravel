@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorar Destinos · Tropicco</title>
+  <meta name="description" content="Explore 195 destinos no mundo todo com o mapa interativo Tropicco. Descubra países com curadoria completa e inspire-se para sua próxima viagem.">
+  <meta property="og:title" content="Explorar Destinos · Tropicco">
+  <meta property="og:description" content="195 países. Qual é o seu?">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tropicco.com.br/explorar.html">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="canonical" href="https://tropicco.com.br/explorar.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+
+</head>
+<body class="mapa-fullscreen">
+
+  <main class="explorar-mapa" id="globo-section">
+
+    <!-- Mapa interativo (Leaflet · CARTO Positron) -->
+    <div class="mapa-canvas-area" id="mapaWrapper" role="region" aria-label="Mapa mundial com destinos Tropicco"></div>
+
+    <!-- Cartão flutuante à esquerda -->
+    <div class="mapa-card">
+      <a href="index.html" class="mapa-card-logo" aria-label="Tropicco — voltar ao início">
+        <img src="logo.svg" alt="" aria-hidden="true">
+        <span>TROPICCO</span>
+      </a>
+      <h1 class="mapa-card-titulo">Para onde <em>vamos?</em></h1>
+      <p class="mapa-card-sub">Explore o mapa. Dê zoom para revelar as cidades e os pontos de cada destino.</p>
+      <button class="mapa-card-reset" id="globeReset" type="button">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>
+        </svg>
+        Ver o mundo todo
+      </button>
+    </div>
+
+    <!-- Painel lateral do destino -->
+    <aside class="info-panel" id="infoPanel" aria-hidden="true">
+      <button class="info-close" id="infoClose" aria-label="Fechar painel">×</button>
+      <div class="info-img" id="infoImg"></div>
+      <div class="info-body">
+        <span class="info-tag" id="infoTag"></span>
+        <h3 id="infoNome"></h3>
+        <p class="info-subtitulo" id="infoSubtitulo"></p>
+        <p class="info-preview" id="infoPreview"></p>
+        <div class="info-regioes" id="infoRegioes"></div>
+        <div class="info-actions">
+          <a class="info-cta-primary" id="infoLinkCompleto" href="#">Ver experiência completa →</a>
+          <a class="info-cta-secondary" href="index.html#contato">Agendar Auscultação</a>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/destinos.js" defer></script>
+  <script src="js/paises-mundo.js" defer></script>
+  <script src="js/mapa-lugares.js" defer></script>
+  <script src="js/mapa.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

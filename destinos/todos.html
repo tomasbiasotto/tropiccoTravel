@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos os destinos · Curadoria Tropicco</title>
+  <meta name="description" content="Explore todos os destinos do mundo com curadoria Tropicco. Roteiros sob medida para qualquer país, com profundidade e atenção ao detalhe.">
+
+  <meta property="og:title" content="Todos os destinos · Tropicco">
+  <meta property="og:description" content="Curadoria de viagens para todos os países do mundo.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://tropicco.com.br/destinos/todos.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo" aria-label="Tropicco">
+        <img class="logo-mark" src="../logo.svg" alt="" aria-hidden="true">
+        <span class="logo-word">TROPICCO</span>
+      </a>
+      <nav class="nav">
+        <ul>
+          <li><a href="../filosofia.html">Como trabalhamos</a></li>
+          <li><a href="../index.html#curadoria">Curadoria</a></li>
+          <li><a href="../sobre.html">Sobre</a></li>
+          <li><a href="../travel-designers.html">Travel Designers</a></li>
+          <li><a href="../index.html#contato">Contato</a></li>
+        </ul>
+        <div class="lang">
+          <button class="lang-active">PT</button>
+          <span>·</span>
+          <button>EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO DA PÁGINA -->
+  <section class="todos-hero">
+    <div class="todos-hero-inner">
+      <a href="../index.html#curadoria" class="dest-back">← Início</a>
+      <span class="eyebrow">Curadoria global</span>
+      <h1>Todos os destinos.</h1>
+      <p class="todos-hero-sub">Curamos viagens para todos os países do mundo. Alguns já têm roteiros completos publicados — os demais estão sendo desenvolvidos pela nossa equipe.</p>
+    </div>
+  </section>
+
+  <!-- FILTRO POR CONTINENTE -->
+  <section class="todos-filtros">
+    <div class="todos-filtros-inner">
+      <button class="filtro-btn filtro-ativo" data-continente="Todos">Todos</button>
+      <button class="filtro-btn" data-continente="Europa">Europa</button>
+      <button class="filtro-btn" data-continente="Ásia">Ásia</button>
+      <button class="filtro-btn" data-continente="África">África</button>
+      <button class="filtro-btn" data-continente="Américas">Américas</button>
+      <button class="filtro-btn" data-continente="Oceania">Oceania</button>
+    </div>
+    <div class="todos-contador">
+      <span id="js-contador">— destinos</span>
+    </div>
+  </section>
+
+  <!-- GRADE DE PAÍSES -->
+  <section class="todos-grid-section">
+    <div class="todos-grid" id="js-grade"></div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contato">
+    <div class="cta-inner">
+      <span class="eyebrow">Não encontrou o que busca?</span>
+      <h2>Vamos arquitetar juntos.</h2>
+      <p>Se o seu destino dos sonhos não está aqui ainda, entre em contato. Curamos viagens para qualquer lugar do mundo — é só começar pela conversa.</p>
+      <a href="https://wa.me/5554999999999?text=Olá,%20gostaria%20de%20conversar%20sobre%20um%20destino%20com%20a%20Tropicco." class="btn-primary" target="_blank" rel="noopener">Agendar conversa →</a>
+    </div>
+  </section>
+
+  <footer class="footer section-dark">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand">
+        <a href="../index.html" class="footer-logo">
+          <img src="../logo.svg" alt="" aria-hidden="true">
+          <span>TROPICCO</span>
+        </a>
+        <p class="footer-tag">Viagens que continuam acontecendo depois do retorno.<br>Lagoa Vermelha e Tapejara, RS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="../filosofia.html">Como trabalhamos</a></li>
+          <li><a href="../index.html#curadoria">Curadoria</a></li>
+          <li><a href="../sobre.html">Sobre</a></li>
+          <li><a href="../index.html#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>contato@tropicco.com.br<br>+55 54 99999-9999</p>
+        <h4 class="footer-h-spaced">Endereço</h4>
+        <p>Lagoa Vermelha e Tapejara, RS<br>Brasil</p>
+      </div>
+      <div class="footer-col">
+        <h4>Acompanhe</h4>
+        <ul class="footer-social">
+          <li><a href="#">Instagram →</a></li>
+          <li><a href="#">LinkedIn →</a></li>
+          <li><a href="#">WhatsApp →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Tropicco · Curadoria boutique de viagens</p>
+      <a href="../politica-privacidade.html">Política de privacidade</a>
+    </div>
+  </footer>
+
+  <script src="../js/todos-paises.js"></script>
+  <script>
+  (function () {
+    var paises   = window.TODOS_PAISES || [];
+    var filtroAtivo = 'Todos';
+    var grade    = document.getElementById('js-grade');
+    var contador = document.getElementById('js-contador');
+
+    function gradiente(s) {
+      var h = 0;
+      for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) & 0xffff;
+      var hue1 = (h % 40) + 200;
+      var hue2 = hue1 + 20;
+      return 'linear-gradient(135deg, hsl(' + hue1 + ',55%,38%) 0%, hsl(' + hue2 + ',45%,65%) 100%)';
+    }
+
+    function linkPais(p) {
+      return p.paginaEstatica ? p.paginaEstatica : ('destino.html?slug=' + p.slug);
+    }
+
+    function renderizar(continente) {
+      var lista = continente === 'Todos'
+        ? paises
+        : paises.filter(function(p){ return p.continente === continente; });
+
+      // Publicados primeiro
+      lista = lista.slice().sort(function(a, b){
+        if (a.status === b.status) return a.nome.localeCompare(b.nome, 'pt');
+        return a.status === 'publicado' ? -1 : 1;
+      });
+
+      contador.textContent = lista.length + (lista.length === 1 ? ' destino' : ' destinos');
+
+      grade.innerHTML = '';
+      var frag = document.createDocumentFragment();
+      lista.forEach(function(p) {
+        var a = document.createElement('a');
+        a.className = 'pais-card' + (p.status === 'publicado' ? ' pais-card--publicado' : '');
+        a.href = linkPais(p);
+        a.innerHTML =
+          '<div class="pais-card-img" style="background:' + gradiente(p.slug) + ';"></div>' +
+          '<div class="pais-card-body">' +
+            '<div class="pais-card-top">' +
+              '<h3>' + p.nome + '</h3>' +
+              (p.status === 'publicado'
+                ? '<span class="pais-badge pais-badge--on">Disponível</span>'
+                : '<span class="pais-badge pais-badge--off">Em curadoria</span>') +
+            '</div>' +
+            '<p class="pais-card-capital">' + (p.capital && p.capital !== '—' ? p.capital : p.continente) + '</p>' +
+          '</div>';
+        frag.appendChild(a);
+      });
+      grade.appendChild(frag);
+    }
+
+    // Filtros
+    document.querySelectorAll('.filtro-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filtro-btn').forEach(function(b){ b.classList.remove('filtro-ativo'); });
+        btn.classList.add('filtro-ativo');
+        filtroAtivo = btn.dataset.continente;
+        renderizar(filtroAtivo);
+      });
+    });
+
+    renderizar('Todos');
+  })();
+  </script>
+</body>
+</html>

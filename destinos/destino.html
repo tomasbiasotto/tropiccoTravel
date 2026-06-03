@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destino · Curadoria Tropicco</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo" aria-label="Tropicco">
+        <img class="logo-mark" src="../logo.svg" alt="" aria-hidden="true">
+        <span class="logo-word">TROPICCO</span>
+      </a>
+      <nav class="nav">
+        <ul>
+          <li><a href="../filosofia.html">Como trabalhamos</a></li>
+          <li><a href="../index.html#curadoria">Curadoria</a></li>
+          <li><a href="../sobre.html">Sobre</a></li>
+          <li><a href="../travel-designers.html">Travel Designers</a></li>
+          <li><a href="../index.html#contato">Contato</a></li>
+        </ul>
+        <div class="lang">
+          <button class="lang-active">PT</button>
+          <span>·</span>
+          <button>EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="dest-hero" id="js-hero">
+    <div class="dest-hero-bg" id="js-hero-bg" style="background: linear-gradient(135deg, #2f6bb3 0%, #aac4e0 100%);"></div>
+    <div class="dest-hero-content">
+      <a href="todos.html" class="dest-back">← Todos os destinos</a>
+      <span class="dest-tag" id="js-tag">Curadoria Tropicco</span>
+      <h1 id="js-nome">—</h1>
+      <p class="dest-subtitle" id="js-subtitulo"></p>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO DINÂMICO -->
+  <div id="js-conteudo">
+
+    <!-- Estado: em curadoria -->
+    <section class="dest-section dest-angle" id="js-bloco-embreve">
+      <div class="dest-section-inner">
+        <span class="eyebrow">Em curadoria</span>
+        <p class="dest-angle-text" id="js-texto-embreve">
+          Estamos construindo a curadoria Tropicco para este destino.
+          Cada país que incluímos passa por pesquisa aprofundada — hotéis visitados, roteiros testados,
+          contatos locais estabelecidos. Quando estiver pronto, será uma experiência arquitetada com o mesmo
+          cuidado de todos os nossos destinos.
+        </p>
+        <div class="dest-info-grid" style="margin-top:2.5rem;">
+          <div>
+            <span class="eyebrow">Continente</span>
+            <h3 id="js-continente">—</h3>
+          </div>
+          <div>
+            <span class="eyebrow">Capital</span>
+            <h3 id="js-capital">—</h3>
+          </div>
+          <div>
+            <span class="eyebrow">Status</span>
+            <h3>Em desenvolvimento</h3>
+            <p>Conteúdo sendo curado pela equipe Tropicco.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinos publicados do mesmo continente -->
+    <section class="dest-others" id="js-bloco-outros">
+      <div class="dest-section-header">
+        <span class="eyebrow">Enquanto isso</span>
+        <h2 id="js-outros-titulo">Destinos disponíveis.</h2>
+      </div>
+      <div class="dest-others-grid" id="js-outros-grid"></div>
+    </section>
+
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contato">
+    <div class="cta-inner">
+      <span class="eyebrow">Tem interesse neste destino?</span>
+      <h2 id="js-cta-titulo">Vamos conversar sobre sua viagem.</h2>
+      <p>A primeira conversa é gratuita. Quarenta e cinco minutos para entender o que você busca — e descobrir se há um encontro entre você e o que fazemos.</p>
+      <a href="#" class="btn-primary" id="js-cta-btn" target="_blank" rel="noopener">Agendar conversa →</a>
+    </div>
+  </section>
+
+  <footer class="footer section-dark">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand">
+        <a href="../index.html" class="footer-logo">
+          <img src="../logo.svg" alt="" aria-hidden="true">
+          <span>TROPICCO</span>
+        </a>
+        <p class="footer-tag">Viagens que continuam acontecendo depois do retorno.<br>Lagoa Vermelha e Tapejara, RS.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="../filosofia.html">Como trabalhamos</a></li>
+          <li><a href="../index.html#curadoria">Curadoria</a></li>
+          <li><a href="../sobre.html">Sobre</a></li>
+          <li><a href="../index.html#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>contato@tropicco.com.br<br>+55 54 99999-9999</p>
+        <h4 class="footer-h-spaced">Endereço</h4>
+        <p>Lagoa Vermelha e Tapejara, RS<br>Brasil</p>
+      </div>
+      <div class="footer-col">
+        <h4>Acompanhe</h4>
+        <ul class="footer-social">
+          <li><a href="#">Instagram →</a></li>
+          <li><a href="#">LinkedIn →</a></li>
+          <li><a href="#">WhatsApp →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Tropicco · Curadoria boutique de viagens</p>
+      <a href="../politica-privacidade.html">Política de privacidade</a>
+    </div>
+  </footer>
+
+  <script src="../js/todos-paises.js"></script>
+  <script>
+  (function () {
+    var params  = new URLSearchParams(location.search);
+    var slug    = params.get('slug') || '';
+    var paises  = window.TODOS_PAISES || [];
+    var pais    = paises.find(function(p){ return p.slug === slug; });
+
+    // País não encontrado
+    if (!pais) {
+      document.title = 'Destino não encontrado · Tropicco';
+      document.getElementById('js-nome').textContent = 'Destino não encontrado';
+      document.getElementById('js-subtitulo').textContent = 'Verifique o endereço ou explore nosso catálogo completo.';
+      document.getElementById('js-bloco-embreve').style.display = 'none';
+      document.getElementById('js-bloco-outros').style.display = 'none';
+      document.getElementById('js-cta-titulo').textContent = 'Explore todos os destinos Tropicco.';
+      return;
+    }
+
+    // Redireciona para página estática se existir
+    if (pais.paginaEstatica) {
+      location.replace(pais.paginaEstatica);
+      return;
+    }
+
+    // Preenche a página
+    document.title = pais.nome + ' · Curadoria Tropicco';
+    document.getElementById('js-nome').textContent      = pais.nome;
+    document.getElementById('js-subtitulo').textContent = pais.capital ? 'Capital: ' + pais.capital : '';
+    document.getElementById('js-tag').textContent       = pais.continente + ' · Em curadoria';
+    document.getElementById('js-continente').textContent = pais.continente;
+    document.getElementById('js-capital').textContent    = pais.capital || '—';
+    document.getElementById('js-hero-bg').style.background = gradiente(pais.slug);
+
+    // CTA com WhatsApp mencionando o país
+    var msg = encodeURIComponent('Olá, tenho interesse em viajar para ' + pais.nome + ' com a Tropicco. Gostaria de saber mais.');
+    document.getElementById('js-cta-btn').href = 'https://wa.me/5554999999999?text=' + msg;
+    document.getElementById('js-cta-titulo').textContent = 'Quer arquitetar uma viagem para ' + pais.nome + '?';
+
+    // Outros destinos — publicados do mesmo continente, ou os primeiros publicados
+    var publicados = paises.filter(function(p){ return p.status === 'publicado'; });
+    var mesmoCont  = publicados.filter(function(p){ return p.continente === pais.continente; });
+    var sugeridos  = mesmoCont.length ? mesmoCont : publicados.slice(0, 4);
+    sugeridos      = sugeridos.slice(0, 4);
+
+    if (mesmoCont.length) {
+      document.getElementById('js-outros-titulo').textContent = 'Destinos disponíveis em ' + pais.continente + '.';
+    } else {
+      document.getElementById('js-outros-titulo').textContent = 'Destinos disponíveis.';
+    }
+
+    var grid = document.getElementById('js-outros-grid');
+    sugeridos.forEach(function(d) {
+      var a = document.createElement('a');
+      a.className = 'dest-card';
+      a.href = d.paginaEstatica || ('destino.html?slug=' + d.slug);
+      a.innerHTML =
+        '<div class="dest-img" style="background:' + gradiente(d.slug) + ';"></div>' +
+        '<div class="dest-meta"><h3>' + d.nome + '</h3><span class="dest-arrow">→</span></div>';
+      grid.appendChild(a);
+    });
+
+    function gradiente(s) {
+      // Gera uma cor consistente por slug via hash simples
+      var h = 0;
+      for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) & 0xffff;
+      var hue1 = (h % 40) + 200; // faixa azul 200-240
+      var hue2 = hue1 + 20;
+      return 'linear-gradient(135deg, hsl(' + hue1 + ',55%,38%) 0%, hsl(' + hue2 + ',45%,65%) 100%)';
+    }
+  })();
+  </script>
+</body>
+</html>

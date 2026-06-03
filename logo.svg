@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- ground / beach -->
+  <path d="M4 56 Q 18 52 32 55 T 60 54" />
+  <path d="M10 58 Q 22 56 34 58" opacity="0.5" />
+  <!-- trunk -->
+  <path d="M30 56 Q 24 42 30 28 Q 33 18 36 12" stroke-width="2" />
+  <!-- fronds -->
+  <path d="M36 12 Q 24 6 12 12" />
+  <path d="M36 12 Q 26 4 20 1" />
+  <path d="M36 12 Q 46 3 58 6" />
+  <path d="M36 12 Q 50 12 60 20" />
+  <path d="M36 12 Q 40 22 34 30" />
+  <!-- coconut -->
+  <circle cx="34" cy="14" r="1.2" fill="currentColor" stroke="none" />
+</svg>
