@@ -158,10 +158,51 @@ window.MAPA_LUGARES = [
   {
     slug: 'eua-parques', nome: 'Estados Unidos', coords: { lat: 39.5, lng: -98.5 },
     cidades: [
-      { nome: 'Yellowstone', coords: { lat: 44.4280, lng: -110.5885 }, pontos: [] },
-      { nome: 'Grand Teton', coords: { lat: 43.7904, lng: -110.6818 }, pontos: [] },
-      { nome: 'Zion',        coords: { lat: 37.2982, lng: -113.0263 }, pontos: [] },
-      { nome: 'Yosemite',    coords: { lat: 37.8651, lng: -119.5383 }, pontos: [] },
+      // ── Cidades icônicas ──
+      { nome: 'Nova York',       coords: { lat: 40.7128, lng: -74.0060 }, pontos: [] },
+      { nome: 'Washington D.C.', coords: { lat: 38.9072, lng: -77.0369 }, pontos: [] },
+      { nome: 'Chicago',         coords: { lat: 41.8781, lng: -87.6298 }, pontos: [] },
+      { nome: 'Nova Orleans',    coords: { lat: 29.9511, lng: -90.0715 }, pontos: [] },
+      { nome: 'Miami',           coords: { lat: 25.7617, lng: -80.1918 }, pontos: [] },
+      { nome: 'Los Angeles',     coords: { lat: 34.0522, lng: -118.2437 }, pontos: [
+        { nome: 'Joshua Tree', coords: { lat: 33.8734, lng: -115.9010 } },
+      ] },
+      { nome: 'São Francisco',   coords: { lat: 37.7749, lng: -122.4194 }, pontos: [
+        { nome: 'Redwood', coords: { lat: 41.2132, lng: -124.0046 } },
+      ] },
+      { nome: 'Seattle',         coords: { lat: 47.6062, lng: -122.3321 }, pontos: [
+        { nome: 'Olympic',       coords: { lat: 47.8021, lng: -123.6044 } },
+        { nome: 'Mount Rainier', coords: { lat: 46.8523, lng: -121.7603 } },
+        { nome: 'Crater Lake',   coords: { lat: 42.9446, lng: -122.1090 } },
+      ] },
+      { nome: 'Las Vegas',       coords: { lat: 36.1699, lng: -115.1398 }, pontos: [] },
+
+      // ── Parques nacionais (principais) ──
+      { nome: 'Grand Canyon',           coords: { lat: 36.0544, lng: -112.1401 }, pontos: [
+        { nome: 'Antelope Canyon', coords: { lat: 36.8619, lng: -111.3743 } },
+        { nome: 'Horseshoe Bend',  coords: { lat: 36.8791, lng: -111.5104 } },
+        { nome: 'Monument Valley', coords: { lat: 36.9980, lng: -110.0985 } },
+      ] },
+      { nome: 'Zion',                   coords: { lat: 37.2982, lng: -113.0263 }, pontos: [
+        { nome: 'Bryce Canyon', coords: { lat: 37.5930, lng: -112.1871 } },
+        { nome: 'Capitol Reef', coords: { lat: 38.3669, lng: -111.2615 } },
+        { nome: 'Arches',       coords: { lat: 38.7331, lng: -109.5925 } },
+        { nome: 'Canyonlands',  coords: { lat: 38.3269, lng: -109.8783 } },
+      ] },
+      { nome: 'Death Valley',           coords: { lat: 36.5323, lng: -116.9325 }, pontos: [] },
+      { nome: 'Yosemite',               coords: { lat: 37.8651, lng: -119.5383 }, pontos: [
+        { nome: 'Sequoia & Kings Canyon', coords: { lat: 36.4864, lng: -118.5658 } },
+      ] },
+      { nome: 'Yellowstone',            coords: { lat: 44.4280, lng: -110.5885 }, pontos: [
+        { nome: 'Grand Teton', coords: { lat: 43.7904, lng: -110.6818 } },
+      ] },
+      { nome: 'Glacier',                coords: { lat: 48.7596, lng: -113.7870 }, pontos: [] },
+      { nome: 'Rocky Mountain',         coords: { lat: 40.3428, lng: -105.6836 }, pontos: [] },
+      { nome: 'Great Smoky Mountains',  coords: { lat: 35.6118, lng: -83.4895 }, pontos: [] },
+      { nome: 'Acadia',                 coords: { lat: 44.3386, lng: -68.2733 }, pontos: [] },
+      { nome: 'Everglades',             coords: { lat: 25.2866, lng: -80.8987 }, pontos: [] },
+      { nome: 'Hawaii Volcanoes',       coords: { lat: 19.4194, lng: -155.2885 }, pontos: [] },
+      { nome: 'Denali',                 coords: { lat: 63.1148, lng: -151.1926 }, pontos: [] },
     ]
   },
 

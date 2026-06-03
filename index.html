@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -88,8 +88,8 @@
   <header class="header">
     <div class="header-inner">
       <a href="#" class="logo" aria-label="Tropicco">
-        <img class="logo-mark" src="logo.svg" alt="" aria-hidden="true">
-        <span class="logo-word">TROPICCO</span>
+        <img class="logo-img logo-img-cor" src="assets/logo/tropicco-horizontal.png" alt="Tropicco">
+          <img class="logo-img logo-img-branco" src="assets/logo/tropicco-horizontal-branco.png" alt="" aria-hidden="true">
       </a>
       <nav class="nav">
         <ul>
@@ -132,49 +132,82 @@
     </a>
   </section>
 
-  <!-- INSPIRE-SE — link para o globo interativo -->
+  <!-- INSPIRE-SE — convite para o mapa interativo -->
   <section class="inspire" id="inspire">
     <div class="inspire-inner">
       <div class="inspire-text">
-        <span class="eyebrow">O mundo é maior do que seu histórico de pesquisa</span>
-        <h2>195 países.<br>Qual é o seu?</h2>
-        <p>Do Japão à Patagônia. Da Islândia ao Quênia. Abra o mapa — e deixe algum lugar te puxar.</p>
+        <span class="eyebrow">Explore o mundo</span>
+        <h2>Para onde o mundo<br>te <em>chama?</em></h2>
+        <p>Cento e noventa e cinco países no mapa interativo — dezenas já com curadoria Tropicco. Gire, aproxime e deixe algum lugar escolher você.</p>
         <a href="explorar.html" class="btn-primary">Abrir o mapa →</a>
       </div>
-      <div class="inspire-visual" aria-hidden="true">
-        <svg class="inspire-globe-svg" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="globe-clip">
-              <circle cx="110" cy="110" r="95"/>
-            </clipPath>
-          </defs>
-          <g clip-path="url(#globe-clip)" stroke="#cde0f3" stroke-width="0.85">
-            <!-- Latitude lines -->
-            <ellipse cx="110" cy="28"  rx="48" ry="10"/>
-            <ellipse cx="110" cy="63"  rx="82" ry="16"/>
-            <ellipse cx="110" cy="110" rx="95" ry="19"/>
-            <ellipse cx="110" cy="157" rx="82" ry="16"/>
-            <ellipse cx="110" cy="192" rx="48" ry="10"/>
-            <!-- Longitude lines -->
-            <line x1="110" y1="15" x2="110" y2="205"/>
-            <ellipse cx="110" cy="110" rx="48" ry="95"/>
-            <ellipse cx="110" cy="110" rx="82" ry="95"/>
-          </g>
-          <circle cx="110" cy="110" r="95" stroke="#b5cee8" stroke-width="1.2"/>
-        </svg>
+      <div class="inspire-mosaic" aria-hidden="true">
+        <div class="inspire-tile" style="background-image: url('assets/destinos/grecia/cover.jpg');"></div>
+        <div class="inspire-tile" style="background-image: url('assets/destinos/japao/cover.jpg');"></div>
+        <div class="inspire-tile" style="background-image: url('assets/destinos/marrocos/cover.jpg');"></div>
+        <div class="inspire-tile" style="background-image: url('assets/destinos/patagonia/cover.jpg');"></div>
+        <div class="inspire-tile" style="background-image: url('assets/destinos/suica/cover.jpg');"></div>
+        <div class="inspire-tile" style="background-image: url('assets/destinos/tailandia/cover.jpg');"></div>
       </div>
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section class="intro section-dark" id="filosofia">
-    <div class="intro-inner">
-      <p class="intro-text">
-        Alguns viajam para descansar. Outros para se perder. Outros para provar algo para si mesmos.
-        <span class="muted">Antes de qualquer destino, a Tropicco precisa entender qual das três você é — ou se é nenhuma delas.</span>
-        Só depois existe roteiro.
-      </p>
-      <a href="filosofia.html" class="link-arrow">Conheça nossa filosofia →</a>
+  <!-- COMO FUNCIONA — passo a passo da jornada -->
+  <section class="processo section-dark" id="filosofia">
+    <div class="processo-inner">
+      <div class="processo-header">
+        <span class="eyebrow">O processo Tropicco</span>
+        <h2>Da primeira conversa<br>ao seu <em>retorno</em>.</h2>
+        <p class="processo-intro">Nenhuma viagem começa por um destino — começa por você. Quatro passos pensados para que tudo o que vem depois seja apenas memória.</p>
+      </div>
+
+      <div class="processo-trilha">
+        <div class="passo">
+          <div class="passo-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <span class="passo-num">01</span>
+          <h3 class="passo-titulo">A escuta</h3>
+          <p class="passo-desc">Uma conversa sem pressa sobre quem você é, o que busca e o que te move.</p>
+        </div>
+
+        <span class="passo-conector" aria-hidden="true"></span>
+
+        <div class="passo">
+          <div class="passo-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <span class="passo-num">02</span>
+          <h3 class="passo-titulo">A curadoria</h3>
+          <p class="passo-desc">Desenhamos uma jornada sob medida — destino, ritmo, hospedagem e experiências.</p>
+        </div>
+
+        <span class="passo-conector" aria-hidden="true"></span>
+
+        <div class="passo">
+          <div class="passo-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 2h6a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M9 13l2 2 4-4"/></svg>
+          </div>
+          <span class="passo-num">03</span>
+          <h3 class="passo-titulo">Os bastidores</h3>
+          <p class="passo-desc">Cuidamos de cada detalhe invisível: reservas, vistos, logística e imprevistos.</p>
+        </div>
+
+        <span class="passo-conector" aria-hidden="true"></span>
+
+        <div class="passo">
+          <div class="passo-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+          <span class="passo-num">04</span>
+          <h3 class="passo-titulo">A viagem</h3>
+          <p class="passo-desc">Você só vive o momento. Acompanhamos do embarque ao retorno — e além.</p>
+        </div>
+      </div>
+
+      <div class="processo-rodape">
+        <a href="filosofia.html" class="link-arrow">Conheça nossa filosofia em detalhe →</a>
+      </div>
     </div>
   </section>
 
@@ -223,8 +256,8 @@
     <div class="footer-inner">
       <div class="footer-col footer-brand">
         <a href="#" class="footer-logo">
-          <img src="logo.svg" alt="" aria-hidden="true">
-          <span>TROPICCO</span>
+          <img class="logo-img logo-img-cor" src="assets/logo/tropicco-horizontal.png" alt="Tropicco">
+          <img class="logo-img logo-img-branco" src="assets/logo/tropicco-horizontal-branco.png" alt="" aria-hidden="true">
         </a>
         <p class="footer-tag">Viagens que continuam acontecendo depois do retorno.<br>Lagoa Vermelha e Tapejara, RS.</p>
       </div>

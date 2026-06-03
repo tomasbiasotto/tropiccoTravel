@@ -8,8 +8,9 @@
       card.className = 'dest-card';
       card.href = `destinos/${d.slug}.html`;
       const grad = gradientePor(d.slug);
+      const cover = `assets/destinos/${d.slug}/cover.jpg`;
       card.innerHTML = `
-        <div class="dest-img" style="background: ${grad};"></div>
+        <div class="dest-img" style="background-image: url('${cover}'), ${grad};"></div>
         <div class="dest-meta">
           <h3>${d.nome}</h3>
           <span class="dest-arrow">→</span>
@@ -135,9 +136,10 @@
 
     if (elLink) elLink.setAttribute('href', `destinos/${destino.slug}.html`);
 
-    // Imagem placeholder por destino (gradiente único)
+    // Imagem do destino — foto real com fallback pro gradiente
     if (elImg) {
-      elImg.style.background = gradientePor(destino.slug);
+      const cover = `assets/destinos/${destino.slug}/cover.jpg`;
+      elImg.style.backgroundImage = `url('${cover}'), ${gradientePor(destino.slug)}`;
     }
 
     panel.classList.add('visible');

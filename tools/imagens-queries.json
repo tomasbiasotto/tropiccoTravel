@@ -1,0 +1,101 @@
+{
+  "italia": {
+    "cover": "Val d'Orcia Tuscany cypress hills",
+    "regioes": {
+      "toscana": "Val d'Orcia Tuscany cypress road",
+      "costa-amalfitana": "Positano Amalfi Coast Italy",
+      "roma": "Colosseum Rome sunset"
+    }
+  },
+  "japao": {
+    "cover": "Mount Fuji cherry blossom Japan",
+    "regioes": {
+      "toquio": "Tokyo tower skyline night",
+      "kyoto": "Fushimi Inari torii gates Kyoto",
+      "hakone-hokkaido": "Mount Fuji Chureito Pagoda"
+    }
+  },
+  "patagonia": {
+    "cover": "Torres del Paine Patagonia mountains",
+    "regioes": {
+      "torres-del-paine": "Torres del Paine sunrise Chile",
+      "el-calafate": "Perito Moreno Glacier Argentina",
+      "el-chalten": "Mount Fitz Roy Patagonia"
+    }
+  },
+  "marrocos": {
+    "cover": "Sahara desert dunes Morocco sunset",
+    "regioes": {
+      "marrakech": "Marrakech Jemaa el-Fnaa medina",
+      "vale-do-atlas": "Atlas Mountains Morocco kasbah",
+      "saara": "Sahara desert camel caravan dunes",
+      "essaouira": "Essaouira Morocco harbor"
+    }
+  },
+  "africa-do-sul": {
+    "cover": "Table Mountain Cape Town aerial",
+    "regioes": {
+      "cape-town": "Cape Town Table Mountain coast",
+      "garden-route": "Garden Route South Africa coastline",
+      "sabi-sands": "lion safari Kruger South Africa"
+    }
+  },
+  "costa-rica": {
+    "cover": "Arenal Volcano Costa Rica",
+    "regioes": {
+      "arenal": "Arenal Volcano Costa Rica lake",
+      "monteverde": "Monteverde cloud forest hanging bridge",
+      "pacifico": "Manuel Antonio beach Costa Rica"
+    }
+  },
+  "grecia": {
+    "cover": "Santorini Oia blue domes sunset",
+    "regioes": {
+      "atenas": "Acropolis Parthenon Athens",
+      "santorini": "Santorini Oia white blue church",
+      "creta": "Crete Balos lagoon beach"
+    }
+  },
+  "tailandia": {
+    "cover": "Phi Phi islands Thailand turquoise",
+    "regioes": {
+      "bangkok": "Wat Arun temple Bangkok",
+      "chiang-mai": "Doi Suthep temple Chiang Mai",
+      "krabi": "Railay Beach Krabi limestone cliffs"
+    }
+  },
+  "portugal": {
+    "cover": "Lisbon yellow tram Alfama Portugal",
+    "regioes": {
+      "lisboa": "Lisbon tram Alfama Portugal",
+      "sintra": "Pena Palace Sintra Portugal",
+      "alentejo": "Alentejo cork oak fields Portugal",
+      "douro-algarve": "Douro Valley vineyard terraces Portugal"
+    }
+  },
+  "suica": {
+    "cover": "Matterhorn Zermatt Switzerland",
+    "regioes": {
+      "zermatt": "Matterhorn reflection lake Zermatt",
+      "interlaken": "Lauterbrunnen valley waterfall Switzerland",
+      "lucerna": "Chapel Bridge Lucerne Switzerland"
+    }
+  },
+  "eua-parques": {
+    "cover": "Yosemite Tunnel View valley",
+    "regioes": {
+      "yellowstone": "Grand Prismatic Spring Yellowstone",
+      "utah": "Bryce Canyon Utah hoodoos",
+      "yosemite": "Yosemite El Capitan valley"
+    }
+  },
+  "brasil": {
+    "cover": "Fernando de Noronha Baia do Sancho",
+    "regioes": {
+      "lencois": "Lencois Maranhenses lagoons dunes",
+      "fernando-de-noronha": "Fernando de Noronha Dois Irmaos",
+      "amazonia": "Amazon river rainforest aerial",
+      "chapada-diamantina": "Chapada Diamantina waterfall valley"
+    }
+  }
+}

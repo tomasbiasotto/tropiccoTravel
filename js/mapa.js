@@ -15,7 +15,7 @@
     cidade: { min: 6, max: 8  },
     ponto:  { min: 9, max: 20 },
   };
-  const ZOOM_AO_FOCAR_PAIS   = 5;   // clicar num país dá um zoom suave (mantém o país em foco)
+  const ZOOM_AO_FOCAR_PAIS   = 6;   // clicar num país já entra na camada CIDADE (revela os destinos)
   const ZOOM_AO_FOCAR_CIDADE = 10;  // clicar numa cidade revela seus pontos
 
   // ── Limites do mundo — impede pan infinito ────────────────────────────────
