@@ -42,12 +42,12 @@ img { max-width: 100%; display: block; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-tint); }
 ::-webkit-scrollbar-thumb {
-  background: var(--blue);
+  background: var(--blue-deep);
   border-radius: 999px;
   border: 2px solid var(--bg-tint);
 }
-::-webkit-scrollbar-thumb:hover { background: var(--blue-deep); }
-html { scrollbar-color: var(--blue) var(--bg-tint); scrollbar-width: thin; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy); }
+html { scrollbar-color: var(--blue-deep) var(--bg-tint); scrollbar-width: thin; }
 
 /* === TELA DE CARREGAMENTO (preloader) === */
 .preloader {

@@ -8,19 +8,28 @@
   const container = document.getElementById('mapaWrapper');
   if (!container || typeof L === 'undefined') return;
 
-  // ── Faixas de zoom por nível, sensíveis à região ──────────────────────────
-  // Padrão: país 0–5 · cidade 6–8 · ponto 9+
-  // Europa (densa): país 4–6 · cidade 7–8 — tudo sobe ~1 nível pra desafogar.
-  function ehEuropa(lat, lng) {
-    return lat >= 36 && lat <= 60 && lng >= -10 && lng <= 30;
+  // ── Regiões densas com pino agregador (continente) ────────────────────────
+  // No zoom 3 a região vira UM pino; ao clicar/aproximar, os países surgem.
+  // bbox = [latMin, latMax, lngMin, lngMax]
+  const REGIOES = [
+    { nome: 'Europa', pin: [48.5, 9.5], centro: [47.0, 9.0], zoom: 4, bbox: [36, 60, -10, 30] },
+    { nome: 'África', pin: [3.0, 21.0], centro: [3.0, 20.0], zoom: 4, bbox: [-35, 38, -18, 42] },
+  ];
+  function regiaoDe(lat, lng) {
+    for (const r of REGIOES) {
+      const b = r.bbox;
+      if (lat >= b[0] && lat <= b[1] && lng >= b[2] && lng <= b[3]) return r;
+    }
+    return null;
   }
+  // Faixas de zoom por nível. Em região densa tudo sobe ~1 nível pra desafogar.
   function faixaZoom(tier, lat, lng) {
-    const eu = ehEuropa(lat, lng);
-    if (tier === 'pais')   return eu ? [4, 6] : [0, 5];
-    if (tier === 'cidade') return eu ? [7, 8] : [6, 8];
+    const denso = !!regiaoDe(lat, lng);
+    if (tier === 'pais')   return denso ? [4, 6] : [0, 5];
+    if (tier === 'cidade') return denso ? [7, 8] : [6, 8];
     return [9, 20]; // ponto — local a uma cidade, não precisa deslocar
   }
-  function zoomFoco(lat, lng) { return ehEuropa(lat, lng) ? 7 : 6; } // clicar país → entra nas cidades
+  function zoomFoco(lat, lng) { return regiaoDe(lat, lng) ? 7 : 6; } // clicar país → entra nas cidades
   const ZOOM_AO_FOCAR_CIDADE = 10;  // clicar numa cidade revela seus pontos
 
   // ── Limites do mundo — impede pan infinito ────────────────────────────────
@@ -162,19 +171,18 @@
     });
   });
 
-  // ── Pino agregador do continente Europa (só no zoom mais afastado) ────────
-  // No zoom 3 a Europa aparece como UM pino; ao clicar/aproximar, os países surgem.
-  const mEuropa = L.marker([48.5, 9.5], {
-    icon: icone('continente', 'Europa'),
-    title: 'Europa',
-    riseOnHover: true,
-    bubblingMouseEvents: false,
+  // ── Pinos agregadores de continente (só no zoom mais afastado) ────────────
+  REGIOES.forEach(r => {
+    const mReg = L.marker(r.pin, {
+      icon: icone('continente', r.nome),
+      title: r.nome,
+      riseOnHover: true,
+      bubblingMouseEvents: false,
+    });
+    mReg._zMin = 3; mReg._zMax = 3;
+    mReg.on('click', () => map.flyTo(r.centro, r.zoom, { duration: 1.2, easeLinearity: 0.4 }));
+    marcadores.push(mReg);
   });
-  mEuropa._zMin = 3; mEuropa._zMax = 3;
-  mEuropa.on('click', () => {
-    map.flyTo([47.0, 9.0], 4, { duration: 1.2, easeLinearity: 0.4 });
-  });
-  marcadores.push(mEuropa);
 
   // ── Rótulos de fundo: nome de TODOS os países do mundo ─────────────────────
   // Texto cinza discreto. Aparece por faixa de zoom conforme a área do país
@@ -187,11 +195,11 @@
   const rotulosPais = [];
   (window.PAISES_MUNDO || []).forEach(p => {
     const ehDest = nomesDestino.has(normaliza(p.nome));
-    const eu = ehEuropa(p.lat, p.lng);
     if (ehDest) return;        // destinos Tropicco têm pino azul próprio — sem rótulo cinza
+    const reg = regiaoDe(p.lat, p.lng);
     let zMin, zMax;
-    if (eu) {
-      zMin = 4; zMax = 5;      // país europeu sem destino: aparece após o pino "Europa" (zoom 4+)
+    if (reg) {
+      zMin = 4; zMax = 5;      // país em região agregada: aparece após o pino do continente (zoom 4+)
     } else {
       zMin = p.area >= 600000 ? 3 : p.area >= 150000 ? 4 : 5;
       zMax = 5;
