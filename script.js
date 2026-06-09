@@ -1,4 +1,19 @@
 (function () {
+  // === TELA DE CARREGAMENTO (preloader) ===
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    let feito = false;
+    const esconder = () => {
+      if (feito) return;
+      feito = true;
+      preloader.classList.add('hidden');
+      setTimeout(() => preloader.remove(), 800);
+    };
+    // Some quando a página fica pronta — com teto de tempo pra não esperar o vídeo
+    window.addEventListener('load', () => setTimeout(esconder, 300));
+    setTimeout(esconder, 1400);
+  }
+
   // === GRID DE CURADORIA (renderiza os 12 destinos) ===
   const grid = document.getElementById('curadoriaGrid');
   if (grid && Array.isArray(window.DESTINOS)) {

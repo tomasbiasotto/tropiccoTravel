@@ -38,6 +38,73 @@ img { max-width: 100%; display: block; }
 
 ::selection { background: var(--blue); color: #fff; }
 
+/* === BARRA DE ROLAGEM AZUL === */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-tint); }
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 999px;
+  border: 2px solid var(--bg-tint);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--blue-deep); }
+html { scrollbar-color: var(--blue) var(--bg-tint); scrollbar-width: thin; }
+
+/* === TELA DE CARREGAMENTO (preloader) === */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.preloader-logo {
+  width: 120px;
+  height: 120px;
+  display: block;
+  animation: preloaderPulse 1.6s ease-in-out infinite;
+}
+@keyframes preloaderPulse {
+  0%, 100% { transform: scale(1); opacity: 0.88; }
+  50%      { transform: scale(1.09); opacity: 1; }
+}
+.preloader-word {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--blue);
+  padding-left: 0.34em;
+}
+.preloader-bar {
+  width: 200px;
+  height: 3px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.preloader-bar span {
+  display: block;
+  height: 100%;
+  width: 38%;
+  background: var(--blue);
+  border-radius: 999px;
+  animation: preloaderBar 1.1s ease-in-out infinite;
+}
+@keyframes preloaderBar {
+  0%   { transform: translateX(-130%); }
+  100% { transform: translateX(330%); }
+}
+
 /* === COMMON === */
 .eyebrow {
   display: inline-block;
@@ -2300,6 +2367,18 @@ body.has-hero-video.scrolled .header .logo-mark { filter: none; }
   letter-spacing: 0.01em;
 }
 
+/* — Nível CONTINENTE — agregador (ex.: Europa) — */
+.tier-continente .mapa-pin-core  { width: 15px; height: 15px; background: var(--blue-deep); }
+.tier-continente .mapa-pin-pulse { width: 15px; height: 15px; animation: pinPulse 2.6s ease-out infinite; }
+.tier-continente .mapa-pin-label {
+  top: calc(50% + 14px);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--blue-deep);
+}
+
 /* — Nível CIDADE — médio — */
 .tier-cidade .mapa-pin-core  { width: 10px; height: 10px; }
 .tier-cidade .mapa-pin-pulse { width: 10px; height: 10px; animation: pinPulse 3.2s ease-out infinite; }
@@ -2324,6 +2403,47 @@ body.has-hero-video.scrolled .header .logo-mark { filter: none; }
   0%   { transform: translate(-50%, -50%) scale(0.7); opacity: 0.85; }
   100% { transform: translate(-50%, -50%) scale(3.0); opacity: 0; }
 }
+
+/* ── Card do destino (popup ao clicar numa cidade/ponto) ─── */
+.pin-pop .leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 12px 38px rgba(15,26,43,0.20);
+}
+.pin-pop .leaflet-popup-content { margin: 0; }
+.pin-pop .leaflet-popup-tip { box-shadow: none; }
+.pin-card-pop { font-family: 'Inter', sans-serif; }
+.pin-card-img { display: block; width: 100%; height: 116px; object-fit: cover; }
+.pin-card-body { padding: 14px 17px 16px; }
+.pin-card-nome {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 7px;
+}
+.pin-card-desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-mid);
+  margin: 0;
+}
+.pin-pop .leaflet-popup-close-button {
+  color: #fff;
+  background: rgba(15,26,43,0.45);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 15px;
+  top: 8px; right: 8px;
+  padding: 0;
+}
+.pin-pop .leaflet-popup-close-button:hover { background: rgba(15,26,43,0.72); color: #fff; }
 
 /* Header branco na página do mapa */
 body.has-globe-page .header {

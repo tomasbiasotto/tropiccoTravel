@@ -8,14 +8,19 @@
   const container = document.getElementById('mapaWrapper');
   if (!container || typeof L === 'undefined') return;
 
-  // ── Faixas de zoom por nível ───────────────────────────────────────────────
-  // país visível até zoom 5 · cidade entre 6–8 · ponto a partir de 9
-  const TIERS = {
-    pais:   { min: 0, max: 5  },
-    cidade: { min: 6, max: 8  },
-    ponto:  { min: 9, max: 20 },
-  };
-  const ZOOM_AO_FOCAR_PAIS   = 6;   // clicar num país já entra na camada CIDADE (revela os destinos)
+  // ── Faixas de zoom por nível, sensíveis à região ──────────────────────────
+  // Padrão: país 0–5 · cidade 6–8 · ponto 9+
+  // Europa (densa): país 4–6 · cidade 7–8 — tudo sobe ~1 nível pra desafogar.
+  function ehEuropa(lat, lng) {
+    return lat >= 36 && lat <= 60 && lng >= -10 && lng <= 30;
+  }
+  function faixaZoom(tier, lat, lng) {
+    const eu = ehEuropa(lat, lng);
+    if (tier === 'pais')   return eu ? [4, 6] : [0, 5];
+    if (tier === 'cidade') return eu ? [7, 8] : [6, 8];
+    return [9, 20]; // ponto — local a uma cidade, não precisa deslocar
+  }
+  function zoomFoco(lat, lng) { return ehEuropa(lat, lng) ? 7 : 6; } // clicar país → entra nas cidades
   const ZOOM_AO_FOCAR_CIDADE = 10;  // clicar numa cidade revela seus pontos
 
   // ── Limites do mundo — impede pan infinito ────────────────────────────────
@@ -60,61 +65,116 @@
              </div>`,
       iconSize: [16, 16],
       iconAnchor: [8, 8],
+      popupAnchor: [0, -8],
     });
   }
 
-  // ── Constrói os marcadores dos três níveis ────────────────────────────────
-  const markersPorTier = { pais: [], cidade: [], ponto: [] };
+  // ── Card do destino (popup ao clicar numa cidade/ponto com descrição) ──────
+  function slugify(s) {
+    return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  function imgDestino(paisSlug, nome) {
+    return `assets/mapa/${paisSlug}/${slugify(nome)}.jpg`;
+  }
+  function cardPin(nome, desc, img) {
+    const imgHtml = img
+      ? `<img class="pin-card-img" src="${img}" alt="" onerror="this.remove()">`
+      : '';
+    return `<div class="pin-card-pop">
+              ${imgHtml}
+              <div class="pin-card-body">
+                <strong class="pin-card-nome">${nome}</strong>
+                <p class="pin-card-desc">${desc}</p>
+              </div>
+            </div>`;
+  }
+  const POPUP_OPTS = {
+    className: 'pin-pop',
+    minWidth: 210,
+    maxWidth: 250,
+    autoPanPaddingTopLeft: [30, 90],
+    autoPanPaddingBottomRight: [30, 30],
+  };
+
+  // ── Constrói os marcadores (cada um com sua faixa de zoom própria) ────────
+  const marcadores = [];
 
   (window.MAPA_LUGARES || []).forEach(pais => {
+    const pLat = pais.coords.lat, pLng = pais.coords.lng;
 
     // — Nível PAÍS —
-    const mPais = L.marker([pais.coords.lat, pais.coords.lng], {
+    const mPais = L.marker([pLat, pLng], {
       icon: icone('pais', pais.nome),
       title: pais.nome,
       riseOnHover: true,
       bubblingMouseEvents: false,   // impede o clique de fechar o painel
     });
+    const fp = faixaZoom('pais', pLat, pLng);
+    mPais._zMin = fp[0]; mPais._zMax = fp[1];
+    mPais._foco = zoomFoco(pLat, pLng);
     mPais.on('click', () => {
       const destino = DESTINO_POR_SLUG[pais.slug];
       if (destino && typeof window.abrirPainelDestino === 'function') {
-        // abre o painel — que por sua vez chama globoFocarDestino (faz o zoom)
         window.abrirPainelDestino(destino, mPais.getElement());
       } else {
-        map.flyTo([pais.coords.lat, pais.coords.lng], ZOOM_AO_FOCAR_PAIS, {
-          duration: 1.1, easeLinearity: 0.4,
-        });
+        map.flyTo([pLat, pLng], mPais._foco, { duration: 1.1, easeLinearity: 0.4 });
       }
     });
-    markersPorTier.pais.push(mPais);
+    marcadores.push(mPais);
 
     // — Nível CIDADE —
     (pais.cidades || []).forEach(cidade => {
-      const mCidade = L.marker([cidade.coords.lat, cidade.coords.lng], {
+      const cLat = cidade.coords.lat, cLng = cidade.coords.lng;
+      const mCidade = L.marker([cLat, cLng], {
         icon: icone('cidade', cidade.nome),
         title: cidade.nome,
         riseOnHover: true,
         bubblingMouseEvents: false,
       });
-      mCidade.on('click', () => {
-        map.flyTo([cidade.coords.lat, cidade.coords.lng], ZOOM_AO_FOCAR_CIDADE, {
-          duration: 1.0, easeLinearity: 0.4,
+      const fc = faixaZoom('cidade', cLat, cLng);
+      mCidade._zMin = fc[0]; mCidade._zMax = fc[1];
+      if (cidade.desc) {
+        mCidade.bindPopup(cardPin(cidade.nome, cidade.desc, imgDestino(pais.slug, cidade.nome)), POPUP_OPTS);
+      } else {
+        mCidade.on('click', () => {
+          map.flyTo([cLat, cLng], ZOOM_AO_FOCAR_CIDADE, { duration: 1.0, easeLinearity: 0.4 });
         });
-      });
-      markersPorTier.cidade.push(mCidade);
+      }
+      marcadores.push(mCidade);
 
       // — Nível PONTO —
       (cidade.pontos || []).forEach(ponto => {
-        const mPonto = L.marker([ponto.coords.lat, ponto.coords.lng], {
+        const oLat = ponto.coords.lat, oLng = ponto.coords.lng;
+        const mPonto = L.marker([oLat, oLng], {
           icon: icone('ponto', ponto.nome),
           title: ponto.nome,
           riseOnHover: true,
           bubblingMouseEvents: false,
         });
-        markersPorTier.ponto.push(mPonto);
+        const fo = faixaZoom('ponto', oLat, oLng);
+        mPonto._zMin = fo[0]; mPonto._zMax = fo[1];
+        if (ponto.desc) {
+          mPonto.bindPopup(cardPin(ponto.nome, ponto.desc, imgDestino(pais.slug, ponto.nome)), POPUP_OPTS);
+        }
+        marcadores.push(mPonto);
       });
     });
   });
+
+  // ── Pino agregador do continente Europa (só no zoom mais afastado) ────────
+  // No zoom 3 a Europa aparece como UM pino; ao clicar/aproximar, os países surgem.
+  const mEuropa = L.marker([48.5, 9.5], {
+    icon: icone('continente', 'Europa'),
+    title: 'Europa',
+    riseOnHover: true,
+    bubblingMouseEvents: false,
+  });
+  mEuropa._zMin = 3; mEuropa._zMax = 3;
+  mEuropa.on('click', () => {
+    map.flyTo([47.0, 9.0], 4, { duration: 1.2, easeLinearity: 0.4 });
+  });
+  marcadores.push(mEuropa);
 
   // ── Rótulos de fundo: nome de TODOS os países do mundo ─────────────────────
   // Texto cinza discreto. Aparece por faixa de zoom conforme a área do país
@@ -126,8 +186,16 @@
 
   const rotulosPais = [];
   (window.PAISES_MUNDO || []).forEach(p => {
-    if (nomesDestino.has(normaliza(p.nome))) return; // não duplica os destinos Tropicco
-    const minZ = p.area >= 2000000 ? 3 : p.area >= 600000 ? 3 : p.area >= 150000 ? 4 : 5;
+    const ehDest = nomesDestino.has(normaliza(p.nome));
+    const eu = ehEuropa(p.lat, p.lng);
+    if (ehDest) return;        // destinos Tropicco têm pino azul próprio — sem rótulo cinza
+    let zMin, zMax;
+    if (eu) {
+      zMin = 4; zMax = 5;      // país europeu sem destino: aparece após o pino "Europa" (zoom 4+)
+    } else {
+      zMin = p.area >= 600000 ? 3 : p.area >= 150000 ? 4 : 5;
+      zMax = 5;
+    }
     const m = L.marker([p.lat, p.lng], {
       icon: L.divIcon({
         className: '',
@@ -137,43 +205,33 @@
       interactive: false,
       keyboard: false,
     });
-    m._minZ = minZ;
+    m._zMin = zMin; m._zMax = zMax;
     rotulosPais.push(m);
   });
 
   function atualizarRotulos() {
     const z = map.getZoom();
     rotulosPais.forEach(m => {
-      const mostrar = z <= 5 && z >= m._minZ;   // só nas faixas de país (2–5)
+      const mostrar = z >= m._zMin && z <= m._zMax;
       const presente = map.hasLayer(m);
       if (mostrar && !presente) m.addTo(map);
       else if (!mostrar && presente) map.removeLayer(m);
     });
   }
 
-  // ── Mostra/esconde níveis conforme o zoom ──────────────────────────────────
-  let tierAtivo = null;
-  function tierParaZoom(z) {
-    if (z <= TIERS.pais.max)   return 'pais';
-    if (z <= TIERS.cidade.max) return 'cidade';
-    return 'ponto';
-  }
-  function atualizarTiers() {
-    const novo = tierParaZoom(map.getZoom());
-    if (novo === tierAtivo) return;
-    tierAtivo = novo;
-    Object.keys(markersPorTier).forEach(tier => {
-      const mostrar = tier === novo;
-      markersPorTier[tier].forEach(m => {
-        const presente = map.hasLayer(m);
-        if (mostrar && !presente) m.addTo(map);
-        else if (!mostrar && presente) map.removeLayer(m);
-      });
+  // ── Mostra/esconde marcadores conforme o zoom (faixa própria de cada um) ───
+  function atualizarMarcadores() {
+    const z = map.getZoom();
+    marcadores.forEach(m => {
+      const mostrar = z >= m._zMin && z <= m._zMax;
+      const presente = map.hasLayer(m);
+      if (mostrar && !presente) m.addTo(map);
+      else if (!mostrar && presente) map.removeLayer(m);
     });
   }
-  map.on('zoomend', atualizarTiers);
+  map.on('zoomend', atualizarMarcadores);
   map.on('zoomend', atualizarRotulos);
-  atualizarTiers();   // estado inicial
+  atualizarMarcadores();   // estado inicial
   atualizarRotulos();
 
   // ── Fecha o painel lateral ao clicar no mapa ──────────────────────────────
@@ -187,7 +245,8 @@
 
   // ── API pública (compatibilidade com script.js) ───────────────────────────
   window.globoFocarDestino = function (destino) {
-    map.flyTo([destino.coords.lat, destino.coords.lng], ZOOM_AO_FOCAR_PAIS, {
+    const z = zoomFoco(destino.coords.lat, destino.coords.lng);
+    map.flyTo([destino.coords.lat, destino.coords.lng], z, {
       duration: 1.1, easeLinearity: 0.4,
     });
   };
