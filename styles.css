@@ -924,6 +924,15 @@ body.has-hero-video:not(.scrolled) .logo .logo-img-branco { display: block; }
   background: var(--bg);
   text-align: center;
 }
+/* Paisagem de fundo + overlay escuro (vence o navy do .section-dark) */
+.newsletter.section-dark {
+  padding: 100px 40px;
+  background-image:
+    linear-gradient(rgba(8, 19, 35, 0.78), rgba(8, 19, 35, 0.86)),
+    url('assets/destinos/patagonia/cover.jpg');
+  background-size: cover;
+  background-position: center;
+}
 .newsletter-inner { max-width: 640px; margin: 0 auto; }
 .newsletter .eyebrow { margin-bottom: 20px; }
 .newsletter h2 {
