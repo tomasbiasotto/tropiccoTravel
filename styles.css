@@ -928,8 +928,8 @@ body.has-hero-video:not(.scrolled) .logo .logo-img-branco { display: block; }
 .newsletter.section-dark {
   padding: 100px 40px;
   background-image:
-    linear-gradient(rgba(8, 19, 35, 0.78), rgba(8, 19, 35, 0.86)),
-    url('assets/destinos/patagonia/cover.jpg');
+    linear-gradient(rgba(6, 38, 72, 0.55), rgba(4, 28, 56, 0.70)),
+    url('assets/newsletter-mar.jpg');
   background-size: cover;
   background-position: center;
 }
