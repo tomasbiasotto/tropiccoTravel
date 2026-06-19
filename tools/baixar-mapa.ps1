@@ -105,7 +105,8 @@ $Q = @{
  'san-juan'='Old San Juan Puerto Rico colorful streets';'el-yunque'='El Yunque rainforest Puerto Rico';'culebra'='Flamenco Beach Culebra Puerto Rico';
  'oranjestad'='Oranjestad Aruba colorful dutch facades';'eagle-beach'='Eagle Beach Aruba divi divi tree';
  'bridgetown'='Bridgetown Barbados coast';'costa-de-platina'='Barbados platinum coast beach';
- 'grand-cayman'='Seven Mile Beach Grand Cayman';'little-cayman'='Little Cayman Bloody Bay diving'
+ 'grand-cayman'='Seven Mile Beach Grand Cayman';'little-cayman'='Little Cayman Bloody Bay diving';
+ 'porto-de-galinhas'='Porto de Galinhas natural pools jangada Brazil';'maragogi'='Maragogi Alagoas beach turquoise Brazil';'maceio'='Maceio Alagoas beach jangada';'praia-de-pipa'='Pipa Beach Rio Grande do Norte cliffs';'morro-de-sao-paulo'='Morro de Sao Paulo Bahia beach island';'praia-do-forte'='Praia do Forte Bahia coconut beach';'trancoso'='Trancoso Bahia Quadrado beach';'sao-miguel-dos-milagres'='Sao Miguel dos Milagres Alagoas beach';'praia-dos-carneiros'='Praia dos Carneiros church beach Pernambuco';'genipabu'='Genipabu sand dunes buggy Natal Brazil';'canoa-quebrada'='Canoa Quebrada Ceara red cliffs beach';'barra-grande'='Barra Grande Marau peninsula beach Bahia'
 }
 
 $lines = [IO.File]::ReadAllText((Join-Path $proj 'js\mapa-lugares.js'),[Text.Encoding]::UTF8) -split "`n"

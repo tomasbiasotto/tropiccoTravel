@@ -2534,6 +2534,35 @@ body.has-hero-video.scrolled .header .logo-mark { filter: none; }
   color: var(--ink-mid);
   margin: 0;
 }
+/* Botão de conversão (WhatsApp) — contorno elegante que enche de azul no hover */
+.pin-card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 16px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.pin-card-cta svg { width: 17px; height: 17px; flex-shrink: 0; }
+.pin-card-cta:hover {
+  background: var(--blue);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(47,107,179,0.30);
+}
 .pin-pop .leaflet-popup-close-button {
   color: #fff;
   background: rgba(15,26,43,0.45);
