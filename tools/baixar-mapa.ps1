@@ -57,7 +57,55 @@ $Q = @{
  'hanoi'='Hanoi Vietnam old quarter';'baia-de-ha-long'='Ha Long Bay Vietnam';'hoi-an'='Hoi An lanterns Vietnam';'ho-chi-minh'='Ho Chi Minh City Vietnam';'sapa'='Sapa rice terraces Vietnam';'hue'='Hue Vietnam imperial';
  'bali'='Bali Indonesia temple rice terrace';'ubud'='Ubud Bali rice terraces';'tanah-lot'='Tanah Lot Bali temple';'komodo'='Komodo island Indonesia';'borobudur'='Borobudur temple Indonesia';'monte-bromo'='Mount Bromo Indonesia sunrise';'ilhas-gili'='Gili Islands Indonesia';
  'marina-bay-sands'='Marina Bay Sands Singapore';'gardens-by-the-bay'='Gardens by the Bay Singapore';'sentosa'='Sentosa Singapore beach';'chinatown'='Singapore Chinatown';
- 'seul'='Seoul South Korea skyline';'gyeongbokgung'='Gyeongbokgung Palace Seoul';'busan'='Busan South Korea beach';'jeju'='Jeju Island South Korea';'gyeongju'='Gyeongju South Korea temple'
+ 'seul'='Seoul South Korea skyline';'gyeongbokgung'='Gyeongbokgung Palace Seoul';'busan'='Busan South Korea beach';'jeju'='Jeju Island South Korea';'gyeongju'='Gyeongju South Korea temple';
+ 'sydney'='Sydney Opera House harbour';'opera-de-sydney'='Sydney Opera House';'bondi-beach'='Bondi Beach Sydney';'cairns'='Great Barrier Reef aerial Australia';'uluru'='Uluru Ayers Rock sunset';'melbourne'='Melbourne Australia laneway';'whitsundays'='Whitehaven Beach Whitsundays Australia';
+ 'queenstown'='Queenstown New Zealand lake mountains';'milford-sound'='Milford Sound New Zealand';'auckland'='Auckland New Zealand skyline';'rotorua'='Rotorua New Zealand geyser';'hobbiton'='Hobbiton movie set New Zealand';
+ 'reykjavik'='Reykjavik Iceland city colorful';'circulo-dourado'='Gullfoss waterfall Iceland';'lagoa-azul'='Blue Lagoon Iceland';'jokulsarlon'='Jokulsarlon glacier lagoon Iceland';'vik'='Vik Iceland black sand beach';
+ 'oslo'='Oslo Norway opera fjord';'bergen'='Bergen Norway Bryggen harbour';'geirangerfjord'='Geirangerfjord Norway';'lofoten'='Lofoten Islands Norway';'tromso'='Tromso Norway northern lights';
+ 'estocolmo'='Stockholm Sweden Gamla Stan old town';'gotemburgo'='Gothenburg Sweden canal';'laponia'='Swedish Lapland aurora ice hotel';'visby'='Visby Gotland Sweden medieval';
+ 'dublin'='Dublin Ireland Temple Bar';'penhascos-de-moher'='Cliffs of Moher Ireland';'galway'='Galway Ireland street';'anel-de-kerry'='Ring of Kerry Ireland landscape';
+ 'bruxelas'='Brussels Grand Place Belgium';'bruges'='Bruges Belgium canal';'gante'='Ghent Belgium canal';'antuerpia'='Antwerp Belgium station';
+ 'praga'='Prague old town astronomical clock';'ponte-carlos'='Charles Bridge Prague';'castelo-de-praga'='Prague Castle skyline';'cesky-krumlov'='Cesky Krumlov Czech Republic';'karlovy-vary'='Karlovy Vary Czech spa colonnade';
+ 'budapeste'='Budapest Hungary Danube parliament night';'parlamento'='Hungarian Parliament Budapest';'banhos-szechenyi'='Szechenyi thermal bath Budapest';'eger'='Eger Hungary castle';'lago-balaton'='Lake Balaton Hungary';
+ 'cracovia'='Krakow Poland old town square';'varsovia'='Warsaw Poland old town colorful';'gdansk'='Gdansk Poland colorful facades';'wieliczka'='Wieliczka Salt Mine Poland';'zakopane'='Zakopane Poland Tatra mountains';
+ 'petra'='Petra Jordan Treasury';'o-tesouro'='Petra Treasury Al Khazneh canyon';'wadi-rum'='Wadi Rum desert Jordan';'ama'='Amman Jordan citadel';'mar-morto'='Dead Sea float Jordan';
+ 'jerusalem'='Jerusalem old city dome of the rock';'muro-das-lamentacoes'='Western Wall Jerusalem';'cidade-velha'='Jerusalem old city alley';'tel-aviv'='Tel Aviv Israel beach skyline';'mar-da-galileia'='Sea of Galilee Israel';'massada'='Masada fortress Israel desert';
+ 'kandy'='Kandy Sri Lanka temple lake';'sigiriya'='Sigiriya rock fortress Sri Lanka';'ella'='Ella Sri Lanka nine arch bridge tea';'galle'='Galle fort Sri Lanka';'yala'='Yala leopard safari Sri Lanka';
+ 'kathmandu'='Kathmandu Nepal temple stupa';'pokhara'='Pokhara Nepal lake Annapurna';'everest'='Mount Everest Himalaya Nepal';'chitwan'='Chitwan Nepal rhino safari';
+ 'siem-reap'='Angkor Wat Siem Reap Cambodia';'angkor-wat'='Angkor Wat sunrise Cambodia';'ta-prohm'='Ta Prohm temple roots Cambodia';'phnom-penh'='Phnom Penh Cambodia royal palace';'battambang'='Battambang Cambodia bamboo train';
+ 'el-nido'='El Nido Palawan Philippines lagoon';'boracay'='Boracay white beach Philippines';'bohol'='Chocolate Hills Bohol Philippines';'manila'='Manila Philippines Intramuros';'banaue'='Banaue rice terraces Philippines';
+ 'kuala-lumpur'='Kuala Lumpur Petronas Towers Malaysia';'torres-petronas'='Petronas Towers Kuala Lumpur night';'penang'='George Town Penang Malaysia street art';'langkawi'='Langkawi Malaysia sky bridge beach';'borneu'='Borneo Malaysia orangutan rainforest';
+ 'masai-mara'='Masai Mara Kenya safari migration';'nairobi'='Nairobi Kenya giraffe skyline';'amboseli'='Amboseli elephants Kilimanjaro Kenya';'diani-beach'='Diani Beach Kenya turquoise';
+ 'serengeti'='Serengeti Tanzania wildebeest migration';'kilimanjaro'='Mount Kilimanjaro Tanzania';'zanzibar'='Zanzibar beach Stone Town';'ngorongoro'='Ngorongoro Crater Tanzania safari';
+ 'cartagena'='Cartagena Colombia colorful colonial';'bogota'='Bogota Colombia Monserrate';'medellin'='Medellin Colombia comuna 13';'eixo-cafeeiro'='Cocora Valley Salento Colombia palm';'tayrona'='Tayrona National Park Colombia beach';
+ 'santiago'='Santiago Chile Andes skyline';'atacama'='Atacama Desert Chile San Pedro';'valparaiso'='Valparaiso Chile colorful hills';'ilha-de-pascoa'='Easter Island moai statues';
+ 'quito'='Quito Ecuador old town';'galapagos'='Galapagos Islands wildlife';'banos'='Banos Ecuador waterfall swing';'cuenca'='Cuenca Ecuador blue domes cathedral';
+ 'salar-de-uyuni'='Salar de Uyuni Bolivia mirror reflection';'la-paz'='La Paz Bolivia city canyon';'isla-del-sol'='Isla del Sol Lake Titicaca Bolivia';'sucre'='Sucre Bolivia white city';
+ 'montevideu'='Montevideo Uruguay rambla coast';'punta-del-este'='Punta del Este Uruguay hand sculpture';'colonia-do-sacramento'='Colonia del Sacramento Uruguay street';'jose-ignacio'='Jose Ignacio Uruguay beach lighthouse';
+ 'assuncao'='Asuncion Paraguay city';'missoes-jesuiticas'='Trinidad Jesuit ruins Paraguay';'encarnacion'='Encarnacion Paraguay river beach';
+ 'salto-angel'='Angel Falls Venezuela tepui';'caracas'='Caracas Venezuela Avila mountain';'gran-sabana'='Mount Roraima Gran Sabana Venezuela';'los-roques'='Los Roques Venezuela archipelago';
+ 'georgetown'='Georgetown Guyana colonial wooden';'kaieteur'='Kaieteur Falls Guyana jungle';
+ 'paramaribo'='Paramaribo Suriname wooden architecture';'brownsberg'='Brownsberg Suriname rainforest';
+ 'cidade-do-panama'='Panama City skyline canal';'canal-do-panama'='Panama Canal ship locks';'bocas-del-toro'='Bocas del Toro Panama overwater';'boquete'='Boquete Panama highlands coffee';
+ 'antigua'='Antigua Guatemala volcano colonial street';'tikal'='Tikal Maya temple jungle Guatemala';'lago-atitlan'='Lake Atitlan Guatemala volcano';'cidade-da-guatemala'='Guatemala City';
+ 'great-blue-hole'='Great Blue Hole Belize aerial';'cayo-ambergris'='Ambergris Caye Belize barrier reef';'caracol'='Caracol Maya ruins Belize jungle';'placencia'='Placencia Belize beach';
+ 'nicaragua/granada'='Granada Nicaragua colonial lake colorful';'leon'='Leon Nicaragua cathedral';'ometepe'='Ometepe island volcano Nicaragua';'san-juan-del-sur'='San Juan del Sur Nicaragua beach sunset';
+ 'roatan'='Roatan Honduras island reef';'copan'='Copan Maya ruins Honduras stelae';'tegucigalpa'='Tegucigalpa Honduras city mountains';
+ 'san-salvador'='San Salvador El Salvador volcano';'rota-das-flores'='Ruta de las Flores El Salvador village';'el-tunco'='El Tunco El Salvador surf black sand beach';'suchitoto'='Suchitoto El Salvador colonial';
+ 'ilhas-mamanuca'='Mamanuca Islands Fiji aerial';'yasawa'='Yasawa Islands Fiji beach';'taveuni'='Taveuni Fiji waterfall rainforest';'suva'='Suva Fiji capital';
+ 'bora-bora'='Bora Bora overwater bungalow lagoon';'tahiti'='Tahiti French Polynesia mountains coast';'moorea'='Moorea French Polynesia bay';'rangiroa'='Rangiroa atoll lagoon diving';
+ 'rarotonga'='Rarotonga Cook Islands lagoon';'aitutaki'='Aitutaki Cook Islands lagoon aerial';
+ 'apia'='Apia Samoa coast';'to-sua'='To Sua Ocean Trench Samoa';'lalomanu'='Lalomanu Beach Samoa';
+ 'port-vila'='Port Vila Vanuatu lagoon';'vulcao-yasur'='Mount Yasur volcano Vanuatu eruption';'espiritu-santo'='Espiritu Santo Vanuatu blue hole';
+ 'numea'='Noumea New Caledonia beach lagoon';'ilha-dos-pinheiros'='Isle of Pines New Caledonia lagoon';
+ 'havana'='Havana Cuba vintage car malecon';'varadero'='Varadero Cuba beach turquoise';'trinidad'='Trinidad Cuba colonial colorful';'vinales'='Vinales Cuba tobacco valley mogotes';
+ 'punta-cana'='Punta Cana Dominican Republic beach palm resort';'santo-domingo'='Santo Domingo colonial zone';'samana'='Samana Dominican Republic beach whales';
+ 'montego-bay'='Montego Bay Jamaica beach';'negril'='Negril Jamaica seven mile beach cliff';'ocho-rios'='Dunns River Falls Ocho Rios Jamaica';
+ 'nassau'='Nassau Bahamas beach resort';'exuma'='Exuma Bahamas swimming pigs sandbank';'harbour-island'='Harbour Island Bahamas pink sand beach';
+ 'san-juan'='Old San Juan Puerto Rico colorful streets';'el-yunque'='El Yunque rainforest Puerto Rico';'culebra'='Flamenco Beach Culebra Puerto Rico';
+ 'oranjestad'='Oranjestad Aruba colorful dutch facades';'eagle-beach'='Eagle Beach Aruba divi divi tree';
+ 'bridgetown'='Bridgetown Barbados coast';'costa-de-platina'='Barbados platinum coast beach';
+ 'grand-cayman'='Seven Mile Beach Grand Cayman';'little-cayman'='Little Cayman Bloody Bay diving'
 }
 
 $lines = [IO.File]::ReadAllText((Join-Path $proj 'js\mapa-lugares.js'),[Text.Encoding]::UTF8) -split "`n"
@@ -76,7 +124,7 @@ function Get-PexelsImg([string]$q){
 if($DryRun){
   Write-Host "Q.Count = $($Q.Count) | tipo = $($Q.GetType().Name) | pares = $($pairs.Count)"
   $hit=0; $miss=@()
-  foreach($p in $pairs){ $slug=Slugify $p.nome; if($Q[$slug]){$hit++}else{$miss+=$slug} }
+  foreach($p in $pairs){ $slug=Slugify $p.nome; if($Q["$($p.pais)/$slug"] -or $Q[$slug]){$hit++}else{$miss+=$slug} }
   Write-Host "Casam: $hit | Nao casam: $($miss.Count)"
   if($miss.Count){ Write-Host ("Faltando no Q: " + ($miss -join ', ')) }
   return
@@ -88,7 +136,7 @@ foreach($p in $pairs){
   $dir=Join-Path $proj "assets\mapa\$($p.pais)"; New-Item -ItemType Directory -Force -Path $dir | Out-Null
   $out=Join-Path $dir ($slug+".jpg")
   if((Test-Path $out) -and -not $Force){ continue }
-  $query = $Q[$slug]; if(-not $query){ $query = $p.nome; $semQuery++ }
+  $query = $Q["$($p.pais)/$slug"]; if(-not $query){ $query = $Q[$slug] }; if(-not $query){ $query = $p.nome; $semQuery++ }
   try{ $img=Get-PexelsImg $query; if($img){(New-Object Net.WebClient).DownloadFile($img,$out);$ok++}else{$fail+=$slug} }
   catch{ $fail+=$slug }
   Start-Sleep -Milliseconds 250

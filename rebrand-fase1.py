@@ -41,11 +41,11 @@ SUBS = [
     # Footer copyright
     (
         "© 2025 Tropicco · Curadoria familiar exclusiva",
-        "© 2026 Tropicco · Curadoria boutique de viagens"
+        "© 2026 Tropicco · Todos os direitos reservados"
     ),
     (
         "© 2026 Tropicco · Curadoria familiar exclusiva",
-        "© 2026 Tropicco · Curadoria boutique de viagens"
+        "© 2026 Tropicco · Todos os direitos reservados"
     ),
 ]
 

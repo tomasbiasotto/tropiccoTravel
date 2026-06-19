@@ -15,11 +15,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
 
 </head>
 <body class="mapa-fullscreen">
@@ -36,12 +36,26 @@
       </a>
       <h1 class="mapa-card-titulo">Para onde <em>vamos?</em></h1>
       <p class="mapa-card-sub">Explore o mapa. Dê zoom para revelar as cidades e os pontos de cada destino.</p>
-      <button class="mapa-card-reset" id="globeReset" type="button">
+
+      <div class="mapa-busca" role="search">
+        <svg class="mapa-busca-icone" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
+        </svg>
+        <input type="text" id="mapaBuscaInput" class="mapa-busca-input" placeholder="Para onde? Ex.: Toscana, Kyoto…" autocomplete="off" aria-label="Buscar destino">
+        <ul class="mapa-busca-lista" id="mapaBuscaLista" role="listbox" hidden></ul>
+      </div>
+
+      <div class="mapa-card-acoes">
+        <button class="mapa-card-surpresa" id="mapaSurpresa" type="button">
+          <span aria-hidden="true">✦</span> Me surpreenda
+        </button>
+        <button class="mapa-card-reset" id="globeReset" type="button">
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>
         </svg>
         Ver o mundo todo
       </button>
+      </div>
     </div>
 
     <!-- Painel lateral do destino -->

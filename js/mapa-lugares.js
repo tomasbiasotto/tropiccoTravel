@@ -1004,4 +1004,725 @@ window.MAPA_LUGARES = [
     ]
   },
 
+  // ─── AUSTRÁLIA ─────────────────────────────────────────────────────────────
+  {
+    slug: 'australia', nome: 'Austrália', coords: { lat: -25.0, lng: 134.0 },
+    cidades: [
+      { nome: 'Sydney', coords: { lat: -33.8688, lng: 151.2093 },
+        desc: 'A cidade do porto mais famoso do mundo — ópera, praias e brunch ao sol.', pontos: [
+        { nome: 'Ópera de Sydney', coords: { lat: -33.8568, lng: 151.2153 },
+          desc: 'A vela branca de concreto que virou o símbolo da Austrália.' },
+        { nome: 'Bondi Beach', coords: { lat: -33.8908, lng: 151.2743 },
+          desc: 'A praia urbana mais icônica, com a caminhada costeira até Coogee.' },
+      ] },
+      { nome: 'Cairns', coords: { lat: -16.9186, lng: 145.7781 },
+        desc: 'O portão para a Grande Barreira de Corais — o maior recife vivo do planeta.', pontos: [] },
+      { nome: 'Uluru', coords: { lat: -25.3444, lng: 131.0369 },
+        desc: 'O monólito sagrado que muda de cor ao pôr do sol no coração vermelho.', pontos: [] },
+      { nome: 'Melbourne', coords: { lat: -37.8136, lng: 144.9631 },
+        desc: 'A capital cultural — becos de arte, cafés e vida boêmia.', pontos: [] },
+      { nome: 'Whitsundays', coords: { lat: -20.2839, lng: 148.9637 },
+        desc: 'Areias de sílica branca e o mar em tons impossíveis de azul.', pontos: [] },
+    ]
+  },
+
+  // ─── NOVA ZELÂNDIA ─────────────────────────────────────────────────────────
+  {
+    slug: 'nova-zelandia', nome: 'Nova Zelândia', coords: { lat: -41.5, lng: 172.5 },
+    cidades: [
+      { nome: 'Queenstown', coords: { lat: -45.0312, lng: 168.6626 },
+        desc: 'A capital mundial da aventura, abraçada por montanhas e lago.', pontos: [] },
+      { nome: 'Milford Sound', coords: { lat: -44.6414, lng: 167.8974 },
+        desc: 'O fiorde de penhascos e cascatas — a oitava maravilha do mundo.', pontos: [] },
+      { nome: 'Auckland', coords: { lat: -36.8485, lng: 174.7633 },
+        desc: 'A cidade das velas, entre dois portos e vulcões adormecidos.', pontos: [] },
+      { nome: 'Rotorua', coords: { lat: -38.1368, lng: 176.2497 },
+        desc: 'Terra de gêiseres, lama borbulhante e cultura Maori viva.', pontos: [] },
+      { nome: 'Hobbiton', coords: { lat: -37.8721, lng: 175.6831 },
+        desc: 'A Comarca dos filmes, verde e ondulada, em Matamata.', pontos: [] },
+    ]
+  },
+
+  // ─── ISLÂNDIA ──────────────────────────────────────────────────────────────
+  {
+    slug: 'islandia', nome: 'Islândia', coords: { lat: 64.9, lng: -19.0 },
+    cidades: [
+      { nome: 'Reykjavík', coords: { lat: 64.1466, lng: -21.9426 },
+        desc: 'A capital mais ao norte do mundo, colorida e criativa.', pontos: [] },
+      { nome: 'Círculo Dourado', coords: { lat: 64.3104, lng: -20.3024 },
+        desc: 'Gêiseres, a cascata Gullfoss e a falha entre dois continentes.', pontos: [] },
+      { nome: 'Lagoa Azul', coords: { lat: 63.8804, lng: -22.4495 },
+        desc: 'O banho geotérmico leitoso em meio a um campo de lava.', pontos: [] },
+      { nome: 'Jökulsárlón', coords: { lat: 64.0784, lng: -16.2306 },
+        desc: 'A lagoa de icebergs azuis à deriva rumo ao mar.', pontos: [] },
+      { nome: 'Vík', coords: { lat: 63.4194, lng: -19.0060 },
+        desc: 'Praias de areia preta e colunas de basalto sob falésias.', pontos: [] },
+    ]
+  },
+
+  // ─── NORUEGA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'noruega', nome: 'Noruega', coords: { lat: 64.5, lng: 11.0 },
+    cidades: [
+      { nome: 'Oslo', coords: { lat: 59.9139, lng: 10.7522 },
+        desc: 'A capital entre o fiorde e a floresta — design e museus vikings.', pontos: [] },
+      { nome: 'Bergen', coords: { lat: 60.3913, lng: 5.3221 },
+        desc: 'A porta dos fiordes, com seu cais hanseático colorido.', pontos: [] },
+      { nome: 'Geirangerfjord', coords: { lat: 62.1010, lng: 7.0066 },
+        desc: 'O fiorde-patrimônio de cascatas despencando em paredões verdes.', pontos: [] },
+      { nome: 'Lofoten', coords: { lat: 68.2000, lng: 13.6000 },
+        desc: 'Picos cravados no mar e vilarejos de pescadores sob a aurora.', pontos: [] },
+      { nome: 'Tromso', coords: { lat: 69.6492, lng: 18.9553 },
+        desc: 'A cidade ártica para caçar a aurora boreal no inverno.', pontos: [] },
+    ]
+  },
+
+  // ─── SUÉCIA ────────────────────────────────────────────────────────────────
+  {
+    slug: 'suecia', nome: 'Suécia', coords: { lat: 60.5, lng: 15.5 },
+    cidades: [
+      { nome: 'Estocolmo', coords: { lat: 59.3293, lng: 18.0686 },
+        desc: 'A capital sobre 14 ilhas — elegante, limpa e cercada de água.', pontos: [] },
+      { nome: 'Gotemburgo', coords: { lat: 57.7089, lng: 11.9746 },
+        desc: 'A cidade dos canais, frutos do mar e arquipélago.', pontos: [] },
+      { nome: 'Lapônia', coords: { lat: 67.8558, lng: 20.2253 },
+        desc: 'O hotel de gelo e a aurora boreal no extremo norte.', pontos: [] },
+      { nome: 'Visby', coords: { lat: 57.6348, lng: 18.2948 },
+        desc: 'Cidade medieval murada na ilha de Gotland.', pontos: [] },
+    ]
+  },
+
+  // ─── IRLANDA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'irlanda', nome: 'Irlanda', coords: { lat: 53.4, lng: -8.0 },
+    cidades: [
+      { nome: 'Dublin', coords: { lat: 53.3498, lng: -6.2603 },
+        desc: 'A capital literária dos pubs, da Guinness e da boa prosa.', pontos: [] },
+      { nome: 'Penhascos de Moher', coords: { lat: 52.9719, lng: -9.4269 },
+        desc: 'Paredões de 200 metros despencando direto no Atlântico.', pontos: [] },
+      { nome: 'Galway', coords: { lat: 53.2707, lng: -9.0568 },
+        desc: 'A cidade boêmia de música ao vivo e portão para o oeste selvagem.', pontos: [] },
+      { nome: 'Anel de Kerry', coords: { lat: 51.9000, lng: -9.8000 },
+        desc: 'A rota cênica de montanhas, lagos e vilarejos à beira-mar.', pontos: [] },
+    ]
+  },
+
+  // ─── BÉLGICA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'belgica', nome: 'Bélgica', coords: { lat: 50.6, lng: 4.6 },
+    cidades: [
+      { nome: 'Bruxelas', coords: { lat: 50.8503, lng: 4.3517 },
+        desc: 'A capital da Europa — Grand Place, waffles e art nouveau.', pontos: [] },
+      { nome: 'Bruges', coords: { lat: 51.2093, lng: 3.2247 },
+        desc: 'A Veneza do Norte, de canais e ruelas medievais intactas.', pontos: [] },
+      { nome: 'Gante', coords: { lat: 51.0543, lng: 3.7174 },
+        desc: 'Cidade-canal medieval, viva e menos turística que Bruges.', pontos: [] },
+      { nome: 'Antuérpia', coords: { lat: 51.2194, lng: 4.4025 },
+        desc: 'A capital dos diamantes e da moda flamenga.', pontos: [] },
+    ]
+  },
+
+  // ─── TCHÉQUIA ──────────────────────────────────────────────────────────────
+  {
+    slug: 'tchequia', nome: 'Tchéquia', coords: { lat: 49.8, lng: 15.5 },
+    cidades: [
+      { nome: 'Praga', coords: { lat: 50.0755, lng: 14.4378 },
+        desc: 'A cidade das cem torres — castelo, ponte e relógio astronômico.', pontos: [
+        { nome: 'Ponte Carlos', coords: { lat: 50.0865, lng: 14.4114 },
+          desc: 'A ponte gótica de estátuas enegrecidas sobre o rio Vltava.' },
+        { nome: 'Castelo de Praga', coords: { lat: 50.0911, lng: 14.4016 },
+          desc: 'O maior complexo de castelo do mundo, no alto da colina.' },
+      ] },
+      { nome: 'Cesky Krumlov', coords: { lat: 48.8127, lng: 14.3175 },
+        desc: 'Vila medieval abraçada por um meandro do rio, intacta no tempo.', pontos: [] },
+      { nome: 'Karlovy Vary', coords: { lat: 50.2329, lng: 12.8710 },
+        desc: 'A cidade-spa de fontes termais, colunatas e fachadas pastel.', pontos: [] },
+    ]
+  },
+
+  // ─── HUNGRIA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'hungria', nome: 'Hungria', coords: { lat: 47.2, lng: 19.5 },
+    cidades: [
+      { nome: 'Budapeste', coords: { lat: 47.4979, lng: 19.0402 },
+        desc: 'A pérola do Danúbio — banhos termais e parlamento iluminado.', pontos: [
+        { nome: 'Parlamento', coords: { lat: 47.5072, lng: 19.0456 },
+          desc: 'O colosso neogótico às margens do Danúbio.' },
+        { nome: 'Banhos Széchenyi', coords: { lat: 47.5188, lng: 19.0816 },
+          desc: 'O banho termal amarelo a céu aberto, fumegante no inverno.' },
+      ] },
+      { nome: 'Eger', coords: { lat: 47.9026, lng: 20.3772 },
+        desc: 'Cidade barroca de castelo e o famoso vinho Sangue de Touro.', pontos: [] },
+      { nome: 'Lago Balaton', coords: { lat: 46.8000, lng: 17.7000 },
+        desc: 'O mar da Hungria — vinhedos e vilarejos à beira da água.', pontos: [] },
+    ]
+  },
+
+  // ─── POLÔNIA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'polonia', nome: 'Polônia', coords: { lat: 52.0, lng: 19.5 },
+    cidades: [
+      { nome: 'Cracóvia', coords: { lat: 50.0647, lng: 19.9450 },
+        desc: 'A antiga capital real, intacta — a maior praça medieval da Europa.', pontos: [] },
+      { nome: 'Varsóvia', coords: { lat: 52.2297, lng: 21.0122 },
+        desc: 'A capital fênix, reconstruída tijolo a tijolo após a guerra.', pontos: [] },
+      { nome: 'Gdańsk', coords: { lat: 54.3520, lng: 18.6466 },
+        desc: 'A cidade hanseática do âmbar, de fachadas coloridas no Báltico.', pontos: [] },
+      { nome: 'Wieliczka', coords: { lat: 49.9836, lng: 20.0540 },
+        desc: 'Uma catedral inteira esculpida no fundo de uma mina de sal.', pontos: [] },
+      { nome: 'Zakopane', coords: { lat: 49.2992, lng: 19.9496 },
+        desc: 'A capital de inverno aos pés dos montes Tatras.', pontos: [] },
+    ]
+  },
+
+  // ─── JORDÂNIA ──────────────────────────────────────────────────────────────
+  {
+    slug: 'jordania', nome: 'Jordânia', coords: { lat: 31.0, lng: 36.5 },
+    cidades: [
+      { nome: 'Petra', coords: { lat: 30.3285, lng: 35.4444 },
+        desc: 'A cidade rosa esculpida na rocha pelos nabateus há 2.000 anos.', pontos: [
+        { nome: 'O Tesouro', coords: { lat: 30.3222, lng: 35.4515 },
+          desc: 'A fachada monumental que surge ao fim de um desfiladeiro estreito.' },
+      ] },
+      { nome: 'Wadi Rum', coords: { lat: 29.5765, lng: 35.4206 },
+        desc: 'O deserto vermelho de Lawrence da Arábia, sob céus de estrelas.', pontos: [] },
+      { nome: 'Amã', coords: { lat: 31.9454, lng: 35.9284 },
+        desc: 'A capital de colinas, anfiteatro romano e cafés perfumados.', pontos: [] },
+      { nome: 'Mar Morto', coords: { lat: 31.5000, lng: 35.5000 },
+        desc: 'O ponto mais baixo da Terra, onde o corpo flutua sozinho.', pontos: [] },
+    ]
+  },
+
+  // ─── ISRAEL ────────────────────────────────────────────────────────────────
+  {
+    slug: 'israel', nome: 'Israel', coords: { lat: 31.4, lng: 35.0 },
+    cidades: [
+      { nome: 'Jerusalém', coords: { lat: 31.7683, lng: 35.2137 },
+        desc: 'A cidade sagrada para três religiões — viva, intensa e milenar.', pontos: [
+        { nome: 'Muro das Lamentações', coords: { lat: 31.7767, lng: 35.2345 },
+          desc: 'O lugar mais sagrado do judaísmo, ao pé do Monte do Templo.' },
+        { nome: 'Cidade Velha', coords: { lat: 31.7781, lng: 35.2350 },
+          desc: 'Becos de pedra entre quatro quarteirões e três fés.' },
+      ] },
+      { nome: 'Tel Aviv', coords: { lat: 32.0853, lng: 34.7818 },
+        desc: 'A cidade que não para — praia, Bauhaus e vida noturna.', pontos: [] },
+      { nome: 'Mar da Galileia', coords: { lat: 32.8000, lng: 35.6000 },
+        desc: 'O lago bíblico cercado de colinas verdes e história.', pontos: [] },
+      { nome: 'Massada', coords: { lat: 31.3157, lng: 35.3534 },
+        desc: 'A fortaleza no alto do deserto, sobre o Mar Morto.', pontos: [] },
+    ]
+  },
+
+  // ─── SRI LANKA ─────────────────────────────────────────────────────────────
+  {
+    slug: 'sri-lanka', nome: 'Sri Lanka', coords: { lat: 7.8, lng: 80.7 },
+    cidades: [
+      { nome: 'Kandy', coords: { lat: 7.2906, lng: 80.6337 },
+        desc: 'A cidade-templo do dente sagrado de Buda, entre colinas.', pontos: [] },
+      { nome: 'Sigiriya', coords: { lat: 7.9570, lng: 80.7603 },
+        desc: 'A fortaleza-palácio no topo de um rochedo de 200 metros.', pontos: [] },
+      { nome: 'Ella', coords: { lat: 6.8667, lng: 81.0466 },
+        desc: 'O vale verde das plantações de chá e a ponte dos nove arcos.', pontos: [] },
+      { nome: 'Galle', coords: { lat: 6.0535, lng: 80.2210 },
+        desc: 'O forte holandês à beira-mar, de ruelas e cafés charmosos.', pontos: [] },
+      { nome: 'Yala', coords: { lat: 6.3728, lng: 81.5167 },
+        desc: 'O safári dos leopardos no extremo sul da ilha.', pontos: [] },
+    ]
+  },
+
+  // ─── NEPAL ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'nepal', nome: 'Nepal', coords: { lat: 28.3, lng: 84.0 },
+    cidades: [
+      { nome: 'Kathmandu', coords: { lat: 27.7172, lng: 85.3240 },
+        desc: 'A capital de templos, estupas e ruelas de incenso e tibetanos.', pontos: [] },
+      { nome: 'Pokhara', coords: { lat: 28.2096, lng: 83.9856 },
+        desc: 'A cidade-lago aos pés dos Annapurnas, base do trekking.', pontos: [] },
+      { nome: 'Everest', coords: { lat: 27.8069, lng: 86.7140 },
+        desc: 'O portão para o teto do mundo, partindo de Namche Bazaar.', pontos: [] },
+      { nome: 'Chitwan', coords: { lat: 27.5291, lng: 84.3542 },
+        desc: 'O safári de rinocerontes e tigres na selva do sul.', pontos: [] },
+    ]
+  },
+
+  // ─── CAMBOJA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'camboja', nome: 'Camboja', coords: { lat: 12.5, lng: 104.9 },
+    cidades: [
+      { nome: 'Siem Reap', coords: { lat: 13.4125, lng: 103.8670 },
+        desc: 'O portão para Angkor, o maior complexo de templos do mundo.', pontos: [
+        { nome: 'Angkor Wat', coords: { lat: 13.4125, lng: 103.8670 },
+          desc: 'O templo-montanha que se reflete no lago ao nascer do sol.' },
+        { nome: 'Ta Prohm', coords: { lat: 13.4348, lng: 103.8891 },
+          desc: 'O templo tomado por raízes gigantes de figueiras.' },
+      ] },
+      { nome: 'Phnom Penh', coords: { lat: 11.5564, lng: 104.9282 },
+        desc: 'A capital às margens do Mekong, entre palácio real e memória.', pontos: [] },
+      { nome: 'Battambang', coords: { lat: 13.0957, lng: 103.2022 },
+        desc: 'A cidade colonial tranquila e o lendário trem de bambu.', pontos: [] },
+    ]
+  },
+
+  // ─── FILIPINAS ─────────────────────────────────────────────────────────────
+  {
+    slug: 'filipinas', nome: 'Filipinas', coords: { lat: 12.5, lng: 122.0 },
+    cidades: [
+      { nome: 'El Nido', coords: { lat: 11.1800, lng: 119.3890 },
+        desc: 'Lagunas esmeralda entre paredões de calcário em Palawan.', pontos: [] },
+      { nome: 'Boracay', coords: { lat: 11.9674, lng: 121.9248 },
+        desc: 'A praia de areia branca mais celebrada da Ásia.', pontos: [] },
+      { nome: 'Bohol', coords: { lat: 9.8500, lng: 124.1435 },
+        desc: 'As Chocolate Hills e os menores primatas do mundo.', pontos: [] },
+      { nome: 'Manila', coords: { lat: 14.5995, lng: 120.9842 },
+        desc: 'A capital vibrante de fortaleza espanhola e baías de pôr do sol.', pontos: [] },
+      { nome: 'Banaue', coords: { lat: 16.9292, lng: 121.0586 },
+        desc: 'Os terraços de arroz esculpidos na montanha há 2.000 anos.', pontos: [] },
+    ]
+  },
+
+  // ─── MALÁSIA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'malasia', nome: 'Malásia', coords: { lat: 4.2, lng: 102.0 },
+    cidades: [
+      { nome: 'Kuala Lumpur', coords: { lat: 3.1390, lng: 101.6869 },
+        desc: 'A capital das torres gêmeas, mesquitas e comida de rua.', pontos: [
+        { nome: 'Torres Petronas', coords: { lat: 3.1578, lng: 101.7117 },
+          desc: 'As gêmeas de aço que definiram a skyline da cidade.' },
+      ] },
+      { nome: 'Penang', coords: { lat: 5.4141, lng: 100.3288 },
+        desc: 'A capital gastronômica do país — arte de rua e heranças vivas.', pontos: [] },
+      { nome: 'Langkawi', coords: { lat: 6.3500, lng: 99.8000 },
+        desc: 'O arquipélago de praias, teleférico e selva tropical.', pontos: [] },
+      { nome: 'Bornéu', coords: { lat: 6.0750, lng: 116.5583 },
+        desc: 'A montanha Kinabalu e os orangotangos na floresta milenar.', pontos: [] },
+    ]
+  },
+
+  // ─── QUÊNIA ────────────────────────────────────────────────────────────────
+  {
+    slug: 'quenia', nome: 'Quênia', coords: { lat: 0.5, lng: 37.9 },
+    cidades: [
+      { nome: 'Masai Mara', coords: { lat: -1.4061, lng: 35.0117 },
+        desc: 'A savana da Grande Migração e dos Cinco Grandes.', pontos: [] },
+      { nome: 'Nairóbi', coords: { lat: -1.2921, lng: 36.8219 },
+        desc: 'A capital com safári e girafas logo nos arredores.', pontos: [] },
+      { nome: 'Amboseli', coords: { lat: -2.6527, lng: 37.2606 },
+        desc: 'Manadas de elefantes diante do Kilimanjaro nevado.', pontos: [] },
+      { nome: 'Diani Beach', coords: { lat: -4.2767, lng: 39.5908 },
+        desc: 'Areia branca e o Índico turquesa no litoral sul.', pontos: [] },
+    ]
+  },
+
+  // ─── TANZÂNIA ──────────────────────────────────────────────────────────────
+  {
+    slug: 'tanzania', nome: 'Tanzânia', coords: { lat: -6.4, lng: 35.0 },
+    cidades: [
+      { nome: 'Serengeti', coords: { lat: -2.3333, lng: 34.8333 },
+        desc: 'A planície sem fim da migração de milhões de gnus.', pontos: [] },
+      { nome: 'Kilimanjaro', coords: { lat: -3.0674, lng: 37.3556 },
+        desc: 'O teto da África — neve eterna sobre o equador.', pontos: [] },
+      { nome: 'Zanzibar', coords: { lat: -6.1659, lng: 39.2026 },
+        desc: 'A ilha das especiarias, Stone Town e praias de sonho.', pontos: [] },
+      { nome: 'Ngorongoro', coords: { lat: -3.2000, lng: 35.5000 },
+        desc: 'O Éden da vida selvagem dentro de uma cratera vulcânica.', pontos: [] },
+    ]
+  },
+
+  // ─── COLÔMBIA ──────────────────────────────────────────────────────────────
+  {
+    slug: 'colombia', nome: 'Colômbia', coords: { lat: 4.0, lng: -73.0 },
+    cidades: [
+      { nome: 'Cartagena', coords: { lat: 10.3910, lng: -75.4794 },
+        desc: 'A cidade murada do Caribe — varandas floridas e cor em cada esquina.', pontos: [] },
+      { nome: 'Bogotá', coords: { lat: 4.7110, lng: -74.0721 },
+        desc: 'A capital nas alturas dos Andes, de ouro pré-colombiano e grafite.', pontos: [] },
+      { nome: 'Medellín', coords: { lat: 6.2442, lng: -75.5812 },
+        desc: 'A cidade da eterna primavera, reinventada e criativa.', pontos: [] },
+      { nome: 'Eixo Cafeeiro', coords: { lat: 4.6371, lng: -75.5705 },
+        desc: 'Vales de palmeiras gigantes e fazendas de café em Salento.', pontos: [] },
+      { nome: 'Tayrona', coords: { lat: 11.3000, lng: -73.9000 },
+        desc: 'A selva que encontra praias virgens no Caribe colombiano.', pontos: [] },
+    ]
+  },
+
+  // ─── CHILE ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'chile', nome: 'Chile', coords: { lat: -35.0, lng: -71.0 },
+    cidades: [
+      { nome: 'Santiago', coords: { lat: -33.4489, lng: -70.6693 },
+        desc: 'A capital entre a cordilheira nevada e os vinhedos do vale.', pontos: [] },
+      { nome: 'Atacama', coords: { lat: -22.9087, lng: -68.2000 },
+        desc: 'O deserto mais árido do mundo — gêiseres, lagoas e céus de estrelas.', pontos: [] },
+      { nome: 'Valparaíso', coords: { lat: -33.0472, lng: -71.6127 },
+        desc: 'A cidade-porto de morros coloridos, funiculares e murais.', pontos: [] },
+      { nome: 'Ilha de Páscoa', coords: { lat: -27.1127, lng: -109.3497 },
+        desc: 'Os moais misteriosos no ponto habitado mais isolado do planeta.', pontos: [] },
+    ]
+  },
+
+  // ─── EQUADOR ───────────────────────────────────────────────────────────────
+  {
+    slug: 'equador', nome: 'Equador', coords: { lat: -1.5, lng: -78.5 },
+    cidades: [
+      { nome: 'Quito', coords: { lat: -0.1807, lng: -78.4678 },
+        desc: 'O centro colonial mais bem preservado da América, a 2.850m.', pontos: [] },
+      { nome: 'Galápagos', coords: { lat: -0.9538, lng: -90.9656 },
+        desc: 'O arquipélago de Darwin — fauna que não tem medo do homem.', pontos: [] },
+      { nome: 'Baños', coords: { lat: -1.3928, lng: -78.4269 },
+        desc: 'A cidade-aventura de cachoeiras e termas ao pé de um vulcão.', pontos: [] },
+      { nome: 'Cuenca', coords: { lat: -2.9001, lng: -79.0059 },
+        desc: 'Cidade andina de cúpulas azuis e ruas de pedra.', pontos: [] },
+    ]
+  },
+
+  // ─── BOLÍVIA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'bolivia', nome: 'Bolívia', coords: { lat: -16.5, lng: -64.5 },
+    cidades: [
+      { nome: 'Salar de Uyuni', coords: { lat: -20.1338, lng: -67.4891 },
+        desc: 'O maior espelho do mundo — o deserto de sal que reflete o céu.', pontos: [] },
+      { nome: 'La Paz', coords: { lat: -16.4897, lng: -68.1193 },
+        desc: 'A sede de governo mais alta do mundo, encravada num cânion andino.', pontos: [] },
+      { nome: 'Isla del Sol', coords: { lat: -16.0247, lng: -69.1700 },
+        desc: 'A ilha sagrada no Lago Titicaca, berço mítico dos incas.', pontos: [] },
+      { nome: 'Sucre', coords: { lat: -19.0196, lng: -65.2619 },
+        desc: 'A cidade branca, capital constitucional de fachadas coloniais.', pontos: [] },
+    ]
+  },
+
+  // ─── URUGUAI ───────────────────────────────────────────────────────────────
+  {
+    slug: 'uruguai', nome: 'Uruguai', coords: { lat: -32.5, lng: -56.0 },
+    cidades: [
+      { nome: 'Montevidéu', coords: { lat: -34.9011, lng: -56.1645 },
+        desc: 'A capital tranquila da rambla, do mate e do tango.', pontos: [] },
+      { nome: 'Punta del Este', coords: { lat: -34.9587, lng: -54.9342 },
+        desc: 'O balneário glamouroso e a mão gigante que emerge da areia.', pontos: [] },
+      { nome: 'Colônia do Sacramento', coords: { lat: -34.4626, lng: -57.8400 },
+        desc: 'O bairro histórico português à beira do Rio da Prata.', pontos: [] },
+      { nome: 'José Ignacio', coords: { lat: -34.8386, lng: -54.6300 },
+        desc: 'O vilarejo de praia chique e descalço da moda sul-americana.', pontos: [] },
+    ]
+  },
+
+  // ─── PARAGUAI ──────────────────────────────────────────────────────────────
+  {
+    slug: 'paraguai', nome: 'Paraguai', coords: { lat: -23.4, lng: -58.4 },
+    cidades: [
+      { nome: 'Assunção', coords: { lat: -25.2637, lng: -57.5759 },
+        desc: 'A capital tranquila e calorosa às margens do rio Paraguai.', pontos: [] },
+      { nome: 'Missões Jesuíticas', coords: { lat: -27.1300, lng: -55.7000 },
+        desc: 'As ruínas jesuíticas guaranis de Trinidad, patrimônio da humanidade.', pontos: [] },
+      { nome: 'Encarnación', coords: { lat: -27.3306, lng: -55.8667 },
+        desc: 'A pérola do sul — praias de rio e o maior carnaval do país.', pontos: [] },
+    ]
+  },
+
+  // ─── VENEZUELA ─────────────────────────────────────────────────────────────
+  {
+    slug: 'venezuela', nome: 'Venezuela', coords: { lat: 6.5, lng: -66.5 },
+    cidades: [
+      { nome: 'Salto Angel', coords: { lat: 5.9701, lng: -62.5362 },
+        desc: 'A cachoeira mais alta do mundo, despencando do alto de um tepui.', pontos: [] },
+      { nome: 'Caracas', coords: { lat: 10.4806, lng: -66.9036 },
+        desc: 'A capital ao pé do morro Ávila, entre o mar e a montanha.', pontos: [] },
+      { nome: 'Gran Sabana', coords: { lat: 5.1431, lng: -60.7625 },
+        desc: 'Os tepuis ancestrais que inspiraram "O Mundo Perdido".', pontos: [] },
+      { nome: 'Los Roques', coords: { lat: 11.8500, lng: -66.7500 },
+        desc: 'O arquipélago caribenho de águas cristalinas e bancos de areia.', pontos: [] },
+    ]
+  },
+
+  // ─── GUIANA ────────────────────────────────────────────────────────────────
+  {
+    slug: 'guiana', nome: 'Guiana', coords: { lat: 5.0, lng: -58.9 },
+    cidades: [
+      { nome: 'Georgetown', coords: { lat: 6.8013, lng: -58.1551 },
+        desc: 'A capital de arquitetura colonial em madeira, à beira do Caribe.', pontos: [] },
+      { nome: 'Kaieteur', coords: { lat: 5.1742, lng: -59.4817 },
+        desc: 'A maior queda de água de salto único do mundo, na selva intocada.', pontos: [] },
+    ]
+  },
+
+  // ─── SURINAME ──────────────────────────────────────────────────────────────
+  {
+    slug: 'suriname', nome: 'Suriname', coords: { lat: 4.1, lng: -56.0 },
+    cidades: [
+      { nome: 'Paramaribo', coords: { lat: 5.8520, lng: -55.2038 },
+        desc: 'A capital de madeira colonial holandesa, patrimônio da humanidade.', pontos: [] },
+      { nome: 'Brownsberg', coords: { lat: 4.9500, lng: -55.1800 },
+        desc: 'A reserva de floresta amazônica intocada que cobre quase todo o país.', pontos: [] },
+    ]
+  },
+
+  // ─── PANAMÁ ────────────────────────────────────────────────────────────────
+  {
+    slug: 'panama', nome: 'Panamá', coords: { lat: 8.5, lng: -80.0 },
+    cidades: [
+      { nome: 'Cidade do Panamá', coords: { lat: 8.9824, lng: -79.5199 },
+        desc: 'A capital de arranha-céus à beira do canal, com a Cidade Velha colonial.', pontos: [] },
+      { nome: 'Canal do Panamá', coords: { lat: 9.1000, lng: -79.8000 },
+        desc: 'A obra que une dois oceanos — navios içados entre comportas gigantes.', pontos: [] },
+      { nome: 'Bocas del Toro', coords: { lat: 9.3404, lng: -82.2417 },
+        desc: 'O arquipélago caribenho de cabanas sobre a água e selva.', pontos: [] },
+      { nome: 'Boquete', coords: { lat: 8.7800, lng: -82.4400 },
+        desc: 'A cidade das montanhas, café de altitude e jardins floridos.', pontos: [] },
+    ]
+  },
+
+  // ─── GUATEMALA ─────────────────────────────────────────────────────────────
+  {
+    slug: 'guatemala', nome: 'Guatemala', coords: { lat: 15.5, lng: -90.3 },
+    cidades: [
+      { nome: 'Antígua', coords: { lat: 14.5586, lng: -90.7295 },
+        desc: 'A cidade colonial de ruas de pedra emoldurada por três vulcões.', pontos: [] },
+      { nome: 'Tikal', coords: { lat: 17.2220, lng: -89.6237 },
+        desc: 'A cidade maia engolida pela selva, com templos acima das copas.', pontos: [] },
+      { nome: 'Lago Atitlán', coords: { lat: 14.6900, lng: -91.2000 },
+        desc: 'O lago vulcânico cercado de aldeias maias, dito o mais belo do mundo.', pontos: [] },
+      { nome: 'Cidade da Guatemala', coords: { lat: 14.6349, lng: -90.5069 },
+        desc: 'A capital movimentada, portão de entrada do país.', pontos: [] },
+    ]
+  },
+
+  // ─── BELIZE ────────────────────────────────────────────────────────────────
+  {
+    slug: 'belize', nome: 'Belize', coords: { lat: 17.2, lng: -88.5 },
+    cidades: [
+      { nome: 'Great Blue Hole', coords: { lat: 17.3160, lng: -87.5350 },
+        desc: 'O sumidouro azul-marinho perfeito visto do alto — um mergulho lendário.', pontos: [] },
+      { nome: 'Cayo Ambergris', coords: { lat: 17.9214, lng: -87.9611 },
+        desc: 'A ilha-base da segunda maior barreira de corais do planeta.', pontos: [] },
+      { nome: 'Caracol', coords: { lat: 16.7639, lng: -89.1178 },
+        desc: 'As ruínas maias mais imponentes do país, escondidas na selva.', pontos: [] },
+      { nome: 'Placencia', coords: { lat: 16.5167, lng: -88.3667 },
+        desc: 'A península de praias caribenhas e vilarejo descalço.', pontos: [] },
+    ]
+  },
+
+  // ─── NICARÁGUA ─────────────────────────────────────────────────────────────
+  {
+    slug: 'nicaragua', nome: 'Nicarágua', coords: { lat: 12.8, lng: -85.0 },
+    cidades: [
+      { nome: 'Granada', coords: { lat: 11.9344, lng: -85.9560 },
+        desc: 'A cidade colonial mais antiga das Américas, colorida à beira do grande lago.', pontos: [] },
+      { nome: 'León', coords: { lat: 12.4347, lng: -86.8790 },
+        desc: 'A cidade universitária de igrejas barrocas e vulcões para sandboard.', pontos: [] },
+      { nome: 'Ometepe', coords: { lat: 11.5000, lng: -85.6000 },
+        desc: 'A ilha de dois vulcões erguendo-se do maior lago da região.', pontos: [] },
+      { nome: 'San Juan del Sur', coords: { lat: 11.2530, lng: -85.8700 },
+        desc: 'A baía de surfe e pôr do sol no Pacífico.', pontos: [] },
+    ]
+  },
+
+  // ─── HONDURAS ──────────────────────────────────────────────────────────────
+  {
+    slug: 'honduras', nome: 'Honduras', coords: { lat: 14.8, lng: -86.5 },
+    cidades: [
+      { nome: 'Roatán', coords: { lat: 16.3200, lng: -86.5300 },
+        desc: 'A ilha caribenha de barreira de corais e mergulho cristalino.', pontos: [] },
+      { nome: 'Copán', coords: { lat: 14.8400, lng: -89.1400 },
+        desc: 'As ruínas maias célebres por suas estelas finamente esculpidas.', pontos: [] },
+      { nome: 'Tegucigalpa', coords: { lat: 14.0723, lng: -87.1921 },
+        desc: 'A capital nas montanhas, entre ladeiras e história colonial.', pontos: [] },
+    ]
+  },
+
+  // ─── EL SALVADOR ───────────────────────────────────────────────────────────
+  {
+    slug: 'el-salvador', nome: 'El Salvador', coords: { lat: 13.8, lng: -88.9 },
+    cidades: [
+      { nome: 'San Salvador', coords: { lat: 13.6929, lng: -89.2182 },
+        desc: 'A capital vibrante ao pé do vulcão, cercada de cafezais.', pontos: [] },
+      { nome: 'Rota das Flores', coords: { lat: 13.8600, lng: -89.8400 },
+        desc: 'A estrada cênica de vilarejos coloridos e plantações de café.', pontos: [] },
+      { nome: 'El Tunco', coords: { lat: 13.4939, lng: -89.3826 },
+        desc: 'A praia de areia preta, capital do surfe centro-americano.', pontos: [] },
+      { nome: 'Suchitoto', coords: { lat: 13.9389, lng: -89.0272 },
+        desc: 'A vila colonial de arte e ruas de pedra à beira do lago.', pontos: [] },
+    ]
+  },
+
+  // ══ ILHAS DO PACÍFICO (OCEANIA) ════════════════════════════════════════════
+
+  // ─── FIJI ──────────────────────────────────────────────────────────────────
+  {
+    slug: 'fiji', nome: 'Fiji', coords: { lat: -17.7, lng: 178.0 },
+    cidades: [
+      { nome: 'Ilhas Mamanuca', coords: { lat: -17.6667, lng: 177.1167 },
+        desc: 'Ilhotas de areia branca e resorts sobre lagunas turquesa.', pontos: [] },
+      { nome: 'Yasawa', coords: { lat: -17.0000, lng: 177.0000 },
+        desc: 'A cadeia de ilhas vulcânicas de praias selvagens e cavernas.', pontos: [] },
+      { nome: 'Taveuni', coords: { lat: -16.8500, lng: 179.9667 },
+        desc: 'A ilha-jardim de cachoeiras e mergulho de corais moles.', pontos: [] },
+      { nome: 'Suva', coords: { lat: -18.1416, lng: 178.4419 },
+        desc: 'A capital colonial, mercados e portão para as ilhas.', pontos: [] },
+    ]
+  },
+
+  // ─── POLINÉSIA FRANCESA ────────────────────────────────────────────────────
+  {
+    slug: 'polinesia-francesa', nome: 'Polinésia Francesa', coords: { lat: -17.6, lng: -149.6 },
+    cidades: [
+      { nome: 'Bora Bora', coords: { lat: -16.5004, lng: -151.7415 },
+        desc: 'A laguna mais famosa do mundo e os bangalôs sobre a água.', pontos: [] },
+      { nome: 'Tahiti', coords: { lat: -17.6509, lng: -149.4260 },
+        desc: 'A ilha principal, de montanhas verdes e praias de areia preta.', pontos: [] },
+      { nome: 'Moorea', coords: { lat: -17.5388, lng: -149.8295 },
+        desc: 'A ilha-coração de baías dramáticas e raias nas águas rasas.', pontos: [] },
+      { nome: 'Rangiroa', coords: { lat: -15.1333, lng: -147.6500 },
+        desc: 'O atol-laguna, paraíso do mergulho com golfinhos.', pontos: [] },
+    ]
+  },
+
+  // ─── ILHAS COOK ────────────────────────────────────────────────────────────
+  {
+    slug: 'ilhas-cook', nome: 'Ilhas Cook', coords: { lat: -21.2, lng: -159.7 },
+    cidades: [
+      { nome: 'Rarotonga', coords: { lat: -21.2367, lng: -159.7777 },
+        desc: 'A ilha-montanha cercada por uma laguna de águas calmas.', pontos: [] },
+      { nome: 'Aitutaki', coords: { lat: -18.8569, lng: -159.7853 },
+        desc: 'Uma das mais belas lagunas do Pacífico, triangular e azul.', pontos: [] },
+    ]
+  },
+
+  // ─── SAMOA ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'samoa', nome: 'Samoa', coords: { lat: -13.7, lng: -172.1 },
+    cidades: [
+      { nome: 'Apia', coords: { lat: -13.8333, lng: -171.7667 },
+        desc: 'A capital tranquila, lar de Robert Louis Stevenson.', pontos: [] },
+      { nome: 'To Sua', coords: { lat: -14.0086, lng: -171.4290 },
+        desc: 'A piscina natural em cratera, cercada de jardim tropical.', pontos: [] },
+      { nome: 'Lalomanu', coords: { lat: -14.0264, lng: -171.4530 },
+        desc: 'A praia de areia branca eleita entre as melhores do mundo.', pontos: [] },
+    ]
+  },
+
+  // ─── VANUATU ───────────────────────────────────────────────────────────────
+  {
+    slug: 'vanuatu', nome: 'Vanuatu', coords: { lat: -16.5, lng: 168.0 },
+    cidades: [
+      { nome: 'Port Vila', coords: { lat: -17.7333, lng: 168.3167 },
+        desc: 'A capital de mercados e lagunas azul-celeste.', pontos: [] },
+      { nome: 'Vulcão Yasur', coords: { lat: -19.5300, lng: 169.4470 },
+        desc: 'Um dos vulcões mais acessíveis do mundo, em erupção constante.', pontos: [] },
+      { nome: 'Espiritu Santo', coords: { lat: -15.3500, lng: 166.8333 },
+        desc: 'A ilha do Blue Hole e do naufrágio mais mergulhado do planeta.', pontos: [] },
+    ]
+  },
+
+  // ─── NOVA CALEDÔNIA ────────────────────────────────────────────────────────
+  {
+    slug: 'nova-caledonia', nome: 'Nova Caledônia', coords: { lat: -21.3, lng: 165.5 },
+    cidades: [
+      { nome: 'Numea', coords: { lat: -22.2758, lng: 166.4580 },
+        desc: 'A capital francesa do Pacífico, de marinas e praias.', pontos: [] },
+      { nome: 'Ilha dos Pinheiros', coords: { lat: -22.6167, lng: 167.4833 },
+        desc: 'Lagunas patrimônio da Unesco e pinheiros colunares.', pontos: [] },
+    ]
+  },
+
+  // ══ ILHAS DO CARIBE (AMÉRICA CENTRAL) ══════════════════════════════════════
+
+  // ─── CUBA ──────────────────────────────────────────────────────────────────
+  {
+    slug: 'cuba', nome: 'Cuba', coords: { lat: 21.5, lng: -79.5 },
+    cidades: [
+      { nome: 'Havana', coords: { lat: 23.1136, lng: -82.3666 },
+        desc: 'A capital congelada nos anos 50, de carrões e música ao vivo.', pontos: [] },
+      { nome: 'Varadero', coords: { lat: 23.1394, lng: -81.2814 },
+        desc: 'A praia de 20 km de areia branca mais famosa do Caribe.', pontos: [] },
+      { nome: 'Trinidad', coords: { lat: 21.8019, lng: -79.9844 },
+        desc: 'A cidade colonial intacta, de ruas de pedra e cores vivas.', pontos: [] },
+      { nome: 'Viñales', coords: { lat: 22.6160, lng: -83.7160 },
+        desc: 'O vale de mogotes e das plantações de tabaco.', pontos: [] },
+    ]
+  },
+
+  // ─── REPÚBLICA DOMINICANA ──────────────────────────────────────────────────
+  {
+    slug: 'republica-dominicana', nome: 'República Dominicana', coords: { lat: 18.7, lng: -70.2 },
+    cidades: [
+      { nome: 'Punta Cana', coords: { lat: 18.5601, lng: -68.3725 },
+        desc: 'Os resorts à beira de praias de coqueiros mais procurados das Américas.', pontos: [] },
+      { nome: 'Santo Domingo', coords: { lat: 18.4861, lng: -69.9312 },
+        desc: 'A cidade colonial mais antiga do Novo Mundo.', pontos: [] },
+      { nome: 'Samaná', coords: { lat: 19.2058, lng: -69.3360 },
+        desc: 'A península das baleias jubarte e praias selvagens.', pontos: [] },
+    ]
+  },
+
+  // ─── JAMAICA ───────────────────────────────────────────────────────────────
+  {
+    slug: 'jamaica', nome: 'Jamaica', coords: { lat: 18.1, lng: -77.3 },
+    cidades: [
+      { nome: 'Montego Bay', coords: { lat: 18.4762, lng: -77.8939 },
+        desc: 'A capital turística, de praias e vida noturna animada.', pontos: [] },
+      { nome: 'Negril', coords: { lat: 18.2683, lng: -78.3493 },
+        desc: 'A Seven Mile Beach e o pôr do sol nos penhascos.', pontos: [] },
+      { nome: 'Ocho Rios', coords: { lat: 18.4007, lng: -77.1031 },
+        desc: 'As cataratas de Dunn River e a Jamaica das montanhas.', pontos: [] },
+    ]
+  },
+
+  // ─── BAHAMAS ───────────────────────────────────────────────────────────────
+  {
+    slug: 'bahamas', nome: 'Bahamas', coords: { lat: 24.5, lng: -76.5 },
+    cidades: [
+      { nome: 'Nassau', coords: { lat: 25.0443, lng: -77.3504 },
+        desc: 'A capital de fortes coloniais e resorts cor-de-rosa.', pontos: [] },
+      { nome: 'Exuma', coords: { lat: 23.5333, lng: -75.8333 },
+        desc: 'Os porcos nadadores e bancos de areia em mar transparente.', pontos: [] },
+      { nome: 'Harbour Island', coords: { lat: 25.5000, lng: -76.6333 },
+        desc: 'A praia de areia rosa mais famosa do mundo.', pontos: [] },
+    ]
+  },
+
+  // ─── PORTO RICO ────────────────────────────────────────────────────────────
+  {
+    slug: 'porto-rico', nome: 'Porto Rico', coords: { lat: 18.2, lng: -66.4 },
+    cidades: [
+      { nome: 'San Juan', coords: { lat: 18.4655, lng: -66.1057 },
+        desc: 'O Velho San Juan colonial, de ruas azuis e fortes espanhóis.', pontos: [] },
+      { nome: 'El Yunque', coords: { lat: 18.2950, lng: -65.8000 },
+        desc: 'A única floresta tropical do sistema de parques dos EUA.', pontos: [] },
+      { nome: 'Culebra', coords: { lat: 18.3100, lng: -65.3000 },
+        desc: 'A Playa Flamenco, eleita uma das melhores praias do planeta.', pontos: [] },
+    ]
+  },
+
+  // ─── ARUBA ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'aruba', nome: 'Aruba', coords: { lat: 12.52, lng: -69.97 },
+    cidades: [
+      { nome: 'Oranjestad', coords: { lat: 12.5240, lng: -70.0270 },
+        desc: 'A capital colorida de fachadas holandesas.', pontos: [] },
+      { nome: 'Eagle Beach', coords: { lat: 12.5527, lng: -70.0540 },
+        desc: 'A praia dos divi-divi e areia branca eleita top do Caribe.', pontos: [] },
+    ]
+  },
+
+  // ─── BARBADOS ──────────────────────────────────────────────────────────────
+  {
+    slug: 'barbados', nome: 'Barbados', coords: { lat: 13.19, lng: -59.54 },
+    cidades: [
+      { nome: 'Bridgetown', coords: { lat: 13.1132, lng: -59.5988 },
+        desc: 'A capital georgiana, patrimônio da humanidade.', pontos: [] },
+      { nome: 'Costa de Platina', coords: { lat: 13.1800, lng: -59.6400 },
+        desc: 'A faixa oeste de praias calmas e resorts sofisticados.', pontos: [] },
+    ]
+  },
+
+  // ─── ILHAS CAYMAN ──────────────────────────────────────────────────────────
+  {
+    slug: 'ilhas-cayman', nome: 'Ilhas Cayman', coords: { lat: 19.3, lng: -81.2 },
+    cidades: [
+      { nome: 'Grand Cayman', coords: { lat: 19.3133, lng: -81.2546 },
+        desc: 'A Seven Mile Beach e o mergulho com arraias em Stingray City.', pontos: [] },
+      { nome: 'Little Cayman', coords: { lat: 19.6833, lng: -80.0500 },
+        desc: 'O Bloody Bay Wall, parede de mergulho lendária.', pontos: [] },
+    ]
+  },
+
 ];
