@@ -1,5 +1,5 @@
 # robots.txt — Tropicco
-# https://tropicco.com.br
+# https://tropiccotravel.com
 
 User-agent: *
 Allow: /
@@ -11,4 +11,4 @@ Disallow: /demo-globe.html
 # Política de privacidade não compete por ranking
 Disallow: /politica-privacidade.html
 
-Sitemap: https://tropicco.com.br/sitemap.xml
+Sitemap: https://tropiccotravel.com/sitemap.xml

@@ -82,10 +82,10 @@ def build_block(slug, d):
     ])
     return f'''<link rel="stylesheet" href="../styles.css">
 
-  <meta property="og:url" content="https://tropicco.com.br/destinos/{slug}.html">
+  <meta property="og:url" content="https://tropiccotravel.com/destinos/{slug}.html">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://tropicco.com.br/destinos/{slug}.html">
+  <link rel="canonical" href="https://tropiccotravel.com/destinos/{slug}.html">
 
   <script type="application/ld+json">
   {{
@@ -93,10 +93,10 @@ def build_block(slug, d):
     "@type": "TouristTrip",
     "name": "{d["title"]} · Curadoria Familiar Tropicco",
     "description": "{d["desc"]}",
-    "url": "https://tropicco.com.br/destinos/{slug}.html",
+    "url": "https://tropiccotravel.com/destinos/{slug}.html",
     "inLanguage": "pt-BR",
     "touristType": "Family",
-    "provider": {{ "@type": "TravelAgency", "name": "Tropicco", "url": "https://tropicco.com.br/" }},
+    "provider": {{ "@type": "TravelAgency", "name": "Tropicco", "url": "https://tropiccotravel.com/" }},
     "subjectOf": {{ "@type": "Country", "name": "{d["country"]}", "address": {{"@type":"PostalAddress","addressCountry":"{d["iso"]}"}} }},
     "itinerary": {{
       "@type": "ItemList",
