@@ -817,7 +817,7 @@ body.has-hero-video:not(.scrolled) .logo .logo-img-branco { display: block; }
 
 /* === CURADORIA === */
 .curadoria {
-  padding: 80px 0;
+  padding: 108px 0;
   background: var(--bg);
   border-top: 1px solid var(--line-soft);
 }
@@ -827,22 +827,37 @@ body.has-hero-video:not(.scrolled) .logo .logo-img-branco { display: block; }
   padding: 0 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px 28px;
+  gap: 60px 34px;
 }
 .dest-card {
   display: block;
   cursor: pointer;
 }
 .dest-img {
+  position: relative;
   aspect-ratio: 4 / 5;
   background-size: cover;
   background-position: center;
   margin-bottom: 18px;
   overflow: hidden;
-  border-radius: 2px;
-  transition: transform 0.6s ease;
+  border-radius: 8px;
+  box-shadow: 0 6px 22px -14px rgba(15,26,43,0.40);
+  transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.45s ease;
 }
-.dest-card:hover .dest-img { transform: scale(1.015); }
+.dest-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 52%, rgba(15,26,43,0.30) 100%);
+  opacity: 0.6;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.dest-card:hover .dest-img {
+  transform: scale(1.045);
+  box-shadow: 0 20px 44px -18px rgba(15,26,43,0.48);
+}
+.dest-card:hover .dest-img::after { opacity: 1; }
 
 /* placeholders azul-mediterrâneo */
 .dest-img-1 { background: linear-gradient(135deg, #2f6bb3, #6b9bd1); }
@@ -862,13 +877,19 @@ body.has-hero-video:not(.scrolled) .logo .logo-img-branco { display: block; }
   font-weight: 400;
   color: var(--ink);
   letter-spacing: -0.01em;
+  transition: color 0.3s ease;
 }
+.dest-card:hover .dest-meta h3 { color: var(--blue); }
 .dest-arrow {
   font-size: 16px;
   color: var(--blue);
   transition: transform 0.3s ease;
 }
 .dest-card:hover .dest-arrow { transform: translateX(8px); }
+
+/* Cascata: os cards surgem em sequência (esquerda → direita) por linha */
+.curadoria-grid .dest-card:nth-child(3n+2) { transition-delay: 0.08s; }
+.curadoria-grid .dest-card:nth-child(3n+3) { transition-delay: 0.16s; }
 
 /* === DIÁRIO === */
 .diario {
@@ -1873,6 +1894,22 @@ body.has-hero-video:not(.scrolled) .logo .logo-img-branco { display: block; }
   margin: 0 auto;
   line-height: 1.6;
   text-shadow: 0 1px 14px rgba(0,0,0,0.25);
+}
+
+/* Entrada encadeada do hero — dispara quando o preloader some (.hero-ready) */
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-ready .hero-video-content .eyebrow-light { animation: heroUp 0.9s cubic-bezier(0.2,0.8,0.2,1) 0.05s both; }
+.hero-ready .hero-video-content h1            { animation: heroUp 1.0s cubic-bezier(0.2,0.8,0.2,1) 0.18s both; }
+.hero-ready .hero-video-sub                   { animation: heroUp 1.0s cubic-bezier(0.2,0.8,0.2,1) 0.36s both; }
+.hero-ready .scroll-cue                       { animation: heroUp 1.0s ease 0.72s both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-ready .hero-video-content .eyebrow-light,
+  .hero-ready .hero-video-content h1,
+  .hero-ready .hero-video-sub,
+  .hero-ready .scroll-cue { animation: none; }
 }
 
 /* Indicador de scroll (chevron com bounce) */

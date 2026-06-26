@@ -114,15 +114,10 @@
     const imgHtml = img
       ? `<img class="pin-card-img" src="${img}" alt="" onerror="this.remove()">`
       : '';
-    const n = cid.length;
-    const sub = n
-      ? `${n} ${n > 1 ? 'lugares com curadoria' : 'lugar com curadoria'} — veja o roteiro completo.`
-      : 'Curadoria Tropicco.';
     return `<div class="pin-card-pop">
               ${imgHtml}
               <div class="pin-card-body">
                 <strong class="pin-card-nome">${pais.nome}</strong>
-                <p class="pin-card-desc">${sub}</p>
                 <a class="pin-card-cta" href="destinos/pais.html?p=${pais.slug}">Conhecer ${pais.nome} →</a>
               </div>
             </div>`;

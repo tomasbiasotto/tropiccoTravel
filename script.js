@@ -7,6 +7,7 @@
       if (feito) return;
       feito = true;
       preloader.classList.add('hidden');
+      document.body.classList.add('hero-ready');   // dispara a entrada encadeada do hero
       setTimeout(() => preloader.remove(), 800);
     };
     // Some quando a página fica pronta — com teto de tempo pra não esperar o vídeo
